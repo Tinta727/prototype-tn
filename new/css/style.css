@@ -784,3 +784,51 @@ img {
 .footer-links br {
   display: block;
 }
+
+
+/* update 03-05: requested layout and line-break adjustments */
+.reason-grid .outline-card {
+  padding: 28px 24px;
+}
+
+.reason-grid .outline-card h3 {
+  font-size: clamp(1rem, 1.18vw, 1.22rem);
+  line-height: 1.55;
+  letter-spacing: .04em;
+  word-break: keep-all;
+  overflow-wrap: normal;
+}
+
+.case-grid-featured {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.case-grid-featured .case-card-main {
+  grid-column: 1 / -1;
+  min-height: 360px;
+}
+
+.case-grid-featured .case-card-half {
+  min-height: 280px;
+}
+
+.story-card h3 {
+  font-size: clamp(1.05rem, 1.28vw, 1.34rem);
+  line-height: 1.55;
+  letter-spacing: .05em;
+  word-break: keep-all;
+}
+
+.story-card div {
+  padding: 30px;
+}
+
+@media (max-width: 980px) {
+  .case-grid-featured {
+    grid-template-columns: 1fr;
+  }
+
+  .case-grid-featured .case-card-main {
+    grid-column: auto;
+  }
+}
