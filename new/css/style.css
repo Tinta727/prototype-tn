@@ -892,10 +892,18 @@ img {
 }
 
 
-/* update 10b: show the existing moving global red/black data-wave in hero and recruit areas.
-   Do not add a new background pattern. */
+
+/* update 10c: remove fixed image backgrounds from hero and recruit so the global animated canvas passes through */
+.hero,
+.recruit-cta {
+  background: transparent !important;
+  isolation: auto;
+}
+
 .hero-visual {
-  opacity: .58;
+  background: none !important;
+  opacity: 0 !important;
+  display: none !important;
 }
 
 .hero::before,
@@ -904,12 +912,12 @@ img {
 .recruit-cta::after {
   content: none !important;
   display: none !important;
+  background: none !important;
 }
 
 .recruit-cta {
-  background:
-    linear-gradient(90deg, rgba(0,0,0,.62), rgba(0,0,0,.28), rgba(0,0,0,.74)),
-    url("../assets/visual-network.svg") center/cover;
+  background-image: none !important;
+  background-color: transparent !important;
 }
 
 #dataWave {
