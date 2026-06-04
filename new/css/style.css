@@ -935,3 +935,20 @@ main,
   position: relative;
   z-index: 2;
 }
+
+
+/* update 11: remove faint horizontal line above recruit CTA */
+.recruit-cta {
+  border-top: 0 !important;
+  box-shadow: none;
+}
+
+.recruit-cta::before,
+.recruit-cta::after {
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+#topics {
+  padding-bottom: 40px;
+}
