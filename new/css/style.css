@@ -2,12 +2,12 @@
 
 :root {
   --font-main:
-    "FOT-UDKakugo",
-    "FOT-UD角ゴ Pro",
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    "ヒラギノ角ゴ ProN W3",
     "Yu Gothic",
     "YuGothic",
-    "Hiragino Kaku Gothic ProN",
-    "Noto Sans JP",
+    "Meiryo",
     sans-serif;
 
   --black: #030303;
@@ -772,4 +772,15 @@ img {
   .site-footer {
     padding: 56px 22px 28px;
   }
+}
+
+
+.hero h1 br,
+.section-heading h2 br,
+.feature-card h3 br,
+.outline-card h3 br,
+.case-card h3 br,
+.story-card h3 br,
+.footer-links br {
+  display: block;
 }
