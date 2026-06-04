@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-label="Broadcast Control Room">
+  <defs>
+    <radialGradient id="g" cx="70%" cy="25%" r="75%">
+      <stop offset="0%" stop-color="#6d0008" stop-opacity=".9"/>
+      <stop offset="42%" stop-color="#160003" stop-opacity=".92"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </radialGradient>
+    <linearGradient id="line" x1="0" x2="1">
+      <stop offset="0" stop-color="#e60012" stop-opacity=".1"/>
+      <stop offset=".5" stop-color="#e60012" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#e60012" stop-opacity=".15"/>
+    </linearGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="8"/></filter>
+  </defs>
+  <rect width="1200" height="720" fill="url(#g)"/>
+  <g opacity=".55">
+    <path d="M-40 520 C 160 410, 260 610, 440 470 S 810 350, 1250 500" fill="none" stroke="url(#line)" stroke-width="5"/>
+    <path d="M-60 430 C 170 340, 320 500, 510 380 S 840 280, 1260 410" fill="none" stroke="#e60012" stroke-width="2" opacity=".45"/>
+    <path d="M-20 610 C 220 530, 330 650, 560 540 S 940 460, 1220 560" fill="none" stroke="#ffffff" stroke-width="1" opacity=".16"/>
+  </g>
+  <g opacity=".7"><rect x="100" y="90" width="160" height="92" fill="#111" stroke="#555"/>
+<path d="M115 150 L150 132 L178 147 L225 112" fill="none" stroke="#e60012" stroke-width="3"/>
+<rect x="305" y="90" width="160" height="92" fill="#111" stroke="#555"/>
+<path d="M320 150 L355 132 L383 147 L430 112" fill="none" stroke="#e60012" stroke-width="3"/>
+<rect x="510" y="90" width="160" height="92" fill="#111" stroke="#555"/>
+<path d="M525 150 L560 132 L588 147 L635 112" fill="none" stroke="#e60012" stroke-width="3"/>
+<rect x="715" y="90" width="160" height="92" fill="#111" stroke="#555"/>
+<path d="M730 150 L765 132 L793 147 L840 112" fill="none" stroke="#e60012" stroke-width="3"/>
+<rect x="920" y="90" width="160" height="92" fill="#111" stroke="#555"/>
+<path d="M935 150 L970 132 L998 147 L1045 112" fill="none" stroke="#e60012" stroke-width="3"/>
+<rect x="100" y="225" width="160" height="92" fill="#111" stroke="#555"/>
+<path d="M115 285 L150 267 L178 282 L225 247" fill="none" stroke="#e60012" stroke-width="3"/>
+<rect x="305" y="225" width="160" height="92" fill="#111" stroke="#555"/>
+<path d="M320 285 L355 267 L383 282 L430 247" fill="none" stroke="#e60012" stroke-width="3"/>
+<rect x="510" y="225" width="160" height="92" fill="#111" stroke="#555"/>
+<path d="M525 285 L560 267 L588 282 L635 247" fill="none" stroke="#e60012" stroke-width="3"/>
+<rect x="715" y="225" width="160" height="92" fill="#111" stroke="#555"/>
+<path d="M730 285 L765 267 L793 282 L840 247" fill="none" stroke="#e60012" stroke-width="3"/>
+<rect x="920" y="225" width="160" height="92" fill="#111" stroke="#555"/>
+<path d="M935 285 L970 267 L998 282 L1045 247" fill="none" stroke="#e60012" stroke-width="3"/>
+<rect x="100" y="360" width="160" height="92" fill="#111" stroke="#555"/>
+<path d="M115 420 L150 402 L178 417 L225 382" fill="none" stroke="#e60012" stroke-width="3"/>
+<rect x="305" y="360" width="160" height="92" fill="#111" stroke="#555"/>
+<path d="M320 420 L355 402 L383 417 L430 382" fill="none" stroke="#e60012" stroke-width="3"/>
+<rect x="510" y="360" width="160" height="92" fill="#111" stroke="#555"/>
+<path d="M525 420 L560 402 L588 417 L635 382" fill="none" stroke="#e60012" stroke-width="3"/>
+<rect x="715" y="360" width="160" height="92" fill="#111" stroke="#555"/>
+<path d="M730 420 L765 402 L793 417 L840 382" fill="none" stroke="#e60012" stroke-width="3"/>
+<rect x="920" y="360" width="160" height="92" fill="#111" stroke="#555"/>
+<path d="M935 420 L970 402 L998 417 L1045 382" fill="none" stroke="#e60012" stroke-width="3"/>
+<rect x="0" y="560" width="1200" height="160" fill="#050505" opacity=".9"/></g>
+  <text x="64" y="660" fill="#fff" font-family="sans-serif" font-size="32" opacity=".72">Broadcast Control Room</text>
+</svg>
