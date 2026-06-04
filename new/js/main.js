@@ -17,17 +17,20 @@
 
   function drawWave(offset, amp, yBase, color, lineWidth) {
     ctx.beginPath();
-    for (let x = -80; x <= width + 80; x += 18) {
+    for (let x = -120; x <= width + 120; x += 14) {
       const y =
         yBase +
         Math.sin((x * 0.006) + t + offset) * amp +
-        Math.sin((x * 0.014) - t * 0.7 + offset) * (amp * 0.28);
-      if (x === -80) ctx.moveTo(x, y);
+        Math.sin((x * 0.017) - t * 1.6 + offset) * (amp * 0.36);
+      if (x === -120) ctx.moveTo(x, y);
       else ctx.lineTo(x, y);
     }
     ctx.strokeStyle = color;
     ctx.lineWidth = lineWidth;
+    ctx.shadowColor = "rgba(230,0,18,.55)";
+    ctx.shadowBlur = 14;
     ctx.stroke();
+    ctx.shadowBlur = 0;
   }
 
   function draw() {
@@ -38,8 +41,8 @@
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, width, height);
 
-    for (let i = 0; i < 7; i++) {
-      drawWave(i * 0.9, 26 + i * 5, height * (0.18 + i * 0.12), `rgba(230,0,18,${0.11 + i * 0.018})`, 1 + (i % 3));
+    for (let i = 0; i < 9; i++) {
+      drawWave(i * 0.9, 30 + i * 6, height * (0.12 + i * 0.105), `rgba(230,0,18,${0.20 + i * 0.018})`, 1.2 + (i % 3));
     }
 
     // Red data particles moving along invisible flows.
@@ -53,7 +56,7 @@
       ctx.fill();
     }
 
-    t += 0.006;
+    t += 0.012;
     requestAnimationFrame(draw);
   }
 
