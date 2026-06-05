@@ -1651,3 +1651,26 @@ a.btn:hover,
     margin-left: 0 !important;
   }
 }
+
+
+/* update 29: logo positioning and footer socials removal */
+.site-header .brand,
+.site-footer .footer-brand {
+  transform: translateX(var(--logo-shift, clamp(76px, 5.8vw, 112px)));
+}
+
+.site-footer .footer-brand p {
+  margin-left: 0 !important;
+  text-align: left;
+}
+
+.site-footer .socials {
+  display: none !important;
+}
+
+@media (max-width: 980px) {
+  .site-header .brand,
+  .site-footer .footer-brand {
+    transform: none;
+  }
+}
