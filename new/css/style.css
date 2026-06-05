@@ -1074,3 +1074,16 @@ h1, h2, h3, h4, h5, h6, span,
 .footer-btn {
   font-weight: 500 !important;
 }
+
+
+/* update 16: slightly reduce weight for key message and major headings */
+.hero h1 {
+  font-weight: 600 !important;
+  -webkit-text-stroke: 0.16px rgba(255,255,255,.72);
+}
+
+.section-heading h2,
+.recruit-cta h2 {
+  font-weight: 600 !important;
+  -webkit-text-stroke: 0.12px rgba(255,255,255,.65);
+}
