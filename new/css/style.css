@@ -1748,3 +1748,28 @@ a.btn:hover,
     justify-content: flex-start !important;
   }
 }
+
+
+/* update 32: align footer contact button right edge with upper CTA buttons */
+.site-footer .footer-actions {
+  padding-right: 0 !important;
+  justify-self: end !important;
+  justify-content: flex-end !important;
+  width: auto !important;
+}
+
+.site-footer .footer-btn {
+  width: 260px !important;
+  min-width: 260px !important;
+  max-width: 260px !important;
+  height: 78px !important;
+  min-height: 78px !important;
+  max-height: 78px !important;
+}
+
+@media (max-width: 980px) {
+  .site-footer .footer-actions {
+    justify-self: start !important;
+    justify-content: flex-start !important;
+  }
+}
