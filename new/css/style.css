@@ -1712,3 +1712,39 @@ a.btn:hover,
     width: 260px;
   }
 }
+
+
+/* update 31: footer contact button exact size and right alignment */
+.site-footer .footer-actions {
+  width: auto !important;
+  padding-right: clamp(72px, 8vw, 180px) !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: flex-start !important;
+  justify-self: end !important;
+  align-self: start !important;
+  box-sizing: border-box;
+}
+
+.site-footer .footer-btn {
+  width: 260px !important;
+  min-width: 260px !important;
+  max-width: 260px !important;
+  height: 78px !important;
+  min-height: 78px !important;
+  max-height: 78px !important;
+  padding: 0 34px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  line-height: 1 !important;
+}
+
+@media (max-width: 980px) {
+  .site-footer .footer-actions {
+    padding-right: 0 !important;
+    justify-self: start !important;
+    justify-content: flex-start !important;
+  }
+}
