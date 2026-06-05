@@ -85,4 +85,10 @@
   }, { threshold: 0.15 });
 
   document.querySelectorAll(".section-observe").forEach((el) => observer.observe(el));
+
+  const currentYear = document.getElementById("currentYear");
+  if (currentYear) {
+    currentYear.textContent = String(new Date().getFullYear());
+  }
+
 })();
