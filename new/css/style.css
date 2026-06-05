@@ -1273,3 +1273,42 @@ h1, h2, h3, h4, h5, h6, span,
     min-height: auto;
   }
 }
+
+
+/* update 22: solution card arrow position and company heading line break */
+.feature-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card .card-arrow,
+.feature-card::after {
+  left: auto !important;
+  right: 28px !important;
+  bottom: 28px !important;
+  top: auto !important;
+  transform: none !important;
+}
+
+.feature-card .card-arrow {
+  position: absolute !important;
+}
+
+.feature-card::after {
+  position: absolute;
+}
+
+@media (max-width: 680px) {
+  .feature-card .card-arrow,
+  .feature-card::after {
+    right: 24px !important;
+    bottom: 24px !important;
+  }
+
+  .story-card h3,
+  .company .section-heading h2 {
+    word-break: keep-all;
+    overflow-wrap: normal;
+    line-height: 1.45;
+  }
+}
