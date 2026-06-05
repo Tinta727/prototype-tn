@@ -1633,3 +1633,21 @@ a.btn:hover,
     margin-top: 24px !important;
   }
 }
+
+
+/* update 28: move recruit text block one headline character to the left */
+.recruit-cta > div {
+  --recruit-text-shift: clamp(2.2rem, 5vw, 5.5rem);
+  margin-left: var(--recruit-text-shift) !important;
+}
+
+.recruit-cta h2,
+.recruit-cta p {
+  transform: none !important;
+}
+
+@media (max-width: 980px) {
+  .recruit-cta > div {
+    margin-left: 0 !important;
+  }
+}
