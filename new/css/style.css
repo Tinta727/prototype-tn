@@ -1034,3 +1034,36 @@ h1, h2, h3, h4, h5, h6, span,
 .footer-brand p {
   font-weight: 300;
 }
+
+
+/* update 14: make key message, major headings, and card headings bolder */
+.hero h1 {
+  font-weight: 500;
+  text-shadow: 0 8px 34px rgba(0,0,0,.78);
+}
+
+.hero-lead {
+  font-weight: 500;
+}
+
+.section-heading h2,
+.recruit-cta h2 {
+  font-weight: 500;
+}
+
+.feature-card h3,
+.outline-card h3,
+.case-card h3,
+.story-card h3 {
+  font-weight: 500;
+}
+
+.card-number {
+  font-weight: 500;
+}
+
+.global-nav,
+.btn-primary,
+.footer-btn {
+  font-weight: 400;
+}
