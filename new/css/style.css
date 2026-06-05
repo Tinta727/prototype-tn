@@ -1593,3 +1593,43 @@ a.btn:hover,
     margin-top: 24px !important;
   }
 }
+
+
+/* update 27: redo recruit CTA alignment precisely */
+.recruit-cta {
+  align-items: flex-start !important;
+}
+
+/* Move the whole text block right by about two headline characters.
+   This keeps the paragraph's first character aligned with the heading. */
+.recruit-cta > div {
+  --recruit-text-shift: clamp(4.4rem, 10vw, 11rem);
+  margin-left: var(--recruit-text-shift) !important;
+}
+
+.recruit-cta h2,
+.recruit-cta p {
+  transform: none !important;
+}
+
+.recruit-cta h2 {
+  margin-top: 0 !important;
+}
+
+/* Button top is visually aligned with the headline glyph top */
+.recruit-cta > .btn-primary,
+.recruit-cta > a.btn-primary {
+  align-self: flex-start !important;
+  margin-top: clamp(10px, 1.1vw, 18px) !important;
+}
+
+@media (max-width: 980px) {
+  .recruit-cta > div {
+    margin-left: 0 !important;
+  }
+
+  .recruit-cta > .btn-primary,
+  .recruit-cta > a.btn-primary {
+    margin-top: 24px !important;
+  }
+}
