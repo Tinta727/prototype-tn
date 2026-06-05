@@ -1126,3 +1126,38 @@ h1, h2, h3, h4, h5, h6, span,
   font-weight: 525 !important;
   -webkit-text-stroke: 0.075px rgba(255,255,255,.52);
 }
+
+
+/* update 20: remove heading blur and add right margin to header contact button */
+.feature-card h3,
+.outline-card h3,
+.case-card h3,
+.story-card h3 {
+  -webkit-text-stroke: 0 !important;
+  text-shadow: none !important;
+  filter: none !important;
+  font-weight: 700 !important;
+}
+
+.header-cta,
+.nav-cta,
+.site-header .btn-primary,
+.site-header a[href="#contact"] {
+  margin-right: clamp(16px, 3.2vw, 60px);
+}
+
+.site-header .nav-link:last-child,
+.site-header .global-nav > a:last-child {
+  margin-right: clamp(16px, 3.2vw, 60px);
+}
+
+@media (max-width: 980px) {
+  .header-cta,
+  .nav-cta,
+  .site-header .btn-primary,
+  .site-header a[href="#contact"],
+  .site-header .nav-link:last-child,
+  .site-header .global-nav > a:last-child {
+    margin-right: 0;
+  }
+}
