@@ -1113,3 +1113,16 @@ h1, h2, h3, h4, h5, h6, span,
   font-weight: 550 !important;
   -webkit-text-stroke: 0.09px rgba(255,255,255,.55);
 }
+
+
+/* update 19: test key message and major heading weight at 525 */
+.hero h1 {
+  font-weight: 525 !important;
+  -webkit-text-stroke: 0.10px rgba(255,255,255,.58);
+}
+
+.section-heading h2,
+.recruit-cta h2 {
+  font-weight: 525 !important;
+  -webkit-text-stroke: 0.075px rgba(255,255,255,.52);
+}
