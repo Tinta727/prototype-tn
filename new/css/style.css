@@ -1468,3 +1468,78 @@ a.btn:hover,
 .case-card:hover {
   border-color: rgba(224, 213, 42, .7) !important;
 }
+
+
+/* update 25: revert buttons, card numbers and card arrows to red */
+:root {
+  --red-accent: #ed1c24;
+  --red-accent-dark: #c80f18;
+}
+
+/* buttons back to red */
+.btn-primary,
+.footer-btn,
+.topic-filter,
+.news-tab,
+.recruit-cta .btn-primary,
+.site-header .btn-primary,
+.site-header a[href="#contact"],
+.info-tab,
+.update-tab,
+.topic-tab,
+.tab-active,
+.is-active {
+  background: var(--red-accent) !important;
+  border-color: var(--red-accent) !important;
+  color: #fff !important;
+}
+
+.btn-primary:hover,
+.footer-btn:hover,
+.topic-filter:hover,
+.news-tab:hover,
+.recruit-cta .btn-primary:hover,
+.site-header .btn-primary:hover,
+.site-header a[href="#contact"]:hover,
+.btn-primary:focus-visible,
+.footer-btn:focus-visible {
+  background: var(--red-accent-dark) !important;
+  border-color: var(--red-accent-dark) !important;
+  color: #fff !important;
+}
+
+/* solution/case card numbers back to red */
+.card-number,
+.feature-card .card-number,
+.outline-card .card-number,
+.case-card .card-number,
+.story-card .card-number {
+  color: var(--red-accent) !important;
+}
+
+/* card arrows back to red */
+.card-arrow,
+.feature-card .card-arrow,
+.outline-card .card-arrow,
+.case-card .card-arrow,
+.story-card .card-arrow {
+  color: var(--red-accent) !important;
+  border-color: var(--red-accent) !important;
+}
+
+.card-arrow::before,
+.card-arrow::after,
+.feature-card::after,
+.outline-card::after,
+.case-card::after,
+.story-card::after {
+  background: var(--red-accent) !important;
+  border-color: var(--red-accent) !important;
+}
+
+/* keep card borders neutral/red hover instead of yellow outline */
+.feature-card:hover,
+.outline-card:hover,
+.case-card:hover {
+  border-color: rgba(237, 28, 36, .62) !important;
+}
