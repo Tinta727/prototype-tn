@@ -1543,3 +1543,53 @@ a.btn:hover,
 .case-card:hover {
   border-color: rgba(237, 28, 36, .62) !important;
 }
+
+
+/* update 26: adjust recruit CTA text position and align button top */
+.recruit-cta .section-inner,
+.recruit-cta .container,
+.recruit-cta .wrap {
+  align-items: flex-start;
+}
+
+.recruit-cta {
+  align-items: flex-start;
+}
+
+.recruit-cta h2 {
+  transform: translateX(2em);
+  margin-top: 0 !important;
+}
+
+.recruit-cta p {
+  transform: translateX(2em);
+}
+
+.recruit-cta .btn-primary,
+.recruit-cta a.btn-primary,
+.recruit-cta .button,
+.recruit-cta a[href*="recruit"] {
+  align-self: flex-start;
+  margin-top: 0 !important;
+}
+
+/* When the CTA uses a two-column layout, keep the button top aligned with the heading */
+.recruit-cta .cta-grid,
+.recruit-cta .recruit-grid,
+.recruit-cta .cta-content {
+  align-items: flex-start;
+}
+
+@media (max-width: 980px) {
+  .recruit-cta h2,
+  .recruit-cta p {
+    transform: none;
+  }
+
+  .recruit-cta .btn-primary,
+  .recruit-cta a.btn-primary,
+  .recruit-cta .button,
+  .recruit-cta a[href*="recruit"] {
+    margin-top: 24px !important;
+  }
+}
