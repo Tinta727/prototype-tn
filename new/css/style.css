@@ -1312,3 +1312,15 @@ h1, h2, h3, h4, h5, h6, span,
     line-height: 1.45;
   }
 }
+
+
+/* update 23: footer link hover color */
+.site-footer .footer-links a,
+.site-footer .footer-links a:visited {
+  transition: color .25s ease;
+}
+
+.site-footer .footer-links a:hover,
+.site-footer .footer-links a:focus-visible {
+  color: #e0d52a !important;
+}
