@@ -1324,3 +1324,147 @@ h1, h2, h3, h4, h5, h6, span,
 .site-footer .footer-links a:focus-visible {
   color: #e0d52a !important;
 }
+
+
+/* update 24: change UI accent red to yellow base */
+:root {
+  --accent: #e0d52a;
+  --accent-strong: #fff449;
+  --accent-soft: rgba(224, 213, 42, .16);
+}
+
+/* small English labels */
+.eyebrow,
+.section-heading span,
+.hero-kicker,
+.card-number,
+.footer-links h3 {
+  color: var(--accent) !important;
+}
+
+/* decorative short underline below section headings */
+.section-heading::after,
+.section-heading h2::after,
+.section-heading .line,
+.section-line,
+.heading-line,
+.recruit-cta h2::after {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+
+/* down V arrow / scroll cue */
+.scroll-cue,
+.scroll-cue::before,
+.scroll-cue::after,
+.hero-scroll,
+.hero-scroll::before,
+.hero-scroll::after {
+  color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+
+/* arrows in cards and text arrows */
+.card-arrow,
+.feature-card .card-arrow,
+.outline-card .card-arrow,
+.case-card .card-arrow,
+.story-card .card-arrow,
+.topic-arrow,
+.link-arrow,
+.arrow {
+  color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+
+.card-arrow::before,
+.card-arrow::after,
+.feature-card::after,
+.outline-card::after,
+.case-card::after,
+.story-card::after,
+.topic-item::after,
+.link-arrow::before,
+.link-arrow::after,
+.arrow::before,
+.arrow::after {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+
+/* buttons */
+.btn-primary,
+.footer-btn,
+.topic-filter,
+.news-tab,
+.recruit-cta .btn-primary,
+.site-header .btn-primary,
+.site-header a[href="#contact"] {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: #0d0d0d !important;
+}
+
+.btn-primary:hover,
+.footer-btn:hover,
+.topic-filter:hover,
+.news-tab:hover,
+.recruit-cta .btn-primary:hover,
+.site-header .btn-primary:hover,
+.site-header a[href="#contact"]:hover,
+.btn-primary:focus-visible,
+.footer-btn:focus-visible {
+  background: var(--accent-strong) !important;
+  border-color: var(--accent-strong) !important;
+  color: #0d0d0d !important;
+}
+
+/* buttons that are represented by generic links */
+a.btn,
+button,
+.button,
+.more-link,
+.view-more,
+.news-more,
+.case-link,
+.topic-more {
+  border-color: var(--accent) !important;
+}
+
+a.btn:hover,
+.button:hover,
+.more-link:hover,
+.view-more:hover,
+.news-more:hover,
+.case-link:hover,
+.topic-more:hover {
+  color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+
+/* thin decorative borders and hover accents */
+.hoverable:hover,
+.site-footer .footer-links a:hover,
+.site-footer .footer-links a:focus-visible,
+.global-nav a:hover,
+.global-nav a:focus-visible {
+  color: var(--accent) !important;
+}
+
+/* selected info/update tab */
+.info-tab,
+.update-tab,
+.topic-tab,
+.tab-active,
+.is-active {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: #0d0d0d !important;
+}
+
+/* SVG-like / pseudo red line accents near cards */
+.feature-card:hover,
+.outline-card:hover,
+.case-card:hover {
+  border-color: rgba(224, 213, 42, .7) !important;
+}
