@@ -1674,3 +1674,41 @@ a.btn:hover,
     transform: none;
   }
 }
+
+
+/* update 30: remove taglines and align footer contact button */
+.brand-tagline,
+.footer-brand > p {
+  display: none !important;
+}
+
+/* Match footer contact button width with recruit CTA button */
+.site-footer .footer-actions {
+  justify-self: end;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: clamp(72px, 8vw, 180px);
+}
+
+.site-footer .footer-btn {
+  width: 260px;
+  min-width: 260px;
+  max-width: 260px;
+  min-height: 78px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 980px) {
+  .site-footer .footer-actions {
+    justify-self: start;
+    justify-content: flex-start;
+    padding-right: 0;
+  }
+
+  .site-footer .footer-btn {
+    width: 260px;
+  }
+}
