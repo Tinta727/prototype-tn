@@ -1,5 +1,5 @@
 @charset "utf-8";
-@import url("https://fonts.googleapis.com/css?family=Roboto:300,400");
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
 @import url(https://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
 
 :root {
@@ -1036,34 +1036,41 @@ h1, h2, h3, h4, h5, h6, span,
 }
 
 
-/* update 14: make key message, major headings, and card headings bolder */
+
+
+
+/* update 15: stronger visible heading weight override */
 .hero h1 {
-  font-weight: 500;
+  font-weight: 700 !important;
+  -webkit-text-stroke: 0.35px rgba(255,255,255,.92);
   text-shadow: 0 8px 34px rgba(0,0,0,.78);
 }
 
 .hero-lead {
-  font-weight: 500;
+  font-weight: 700 !important;
 }
 
 .section-heading h2,
 .recruit-cta h2 {
-  font-weight: 500;
+  font-weight: 700 !important;
+  -webkit-text-stroke: 0.25px rgba(255,255,255,.88);
 }
 
 .feature-card h3,
 .outline-card h3,
 .case-card h3,
 .story-card h3 {
-  font-weight: 500;
+  font-weight: 700 !important;
+  -webkit-text-stroke: 0.18px rgba(255,255,255,.78);
 }
 
 .card-number {
-  font-weight: 500;
+  font-family: 'Roboto', var(--font-main);
+  font-weight: 700 !important;
 }
 
 .global-nav,
 .btn-primary,
 .footer-btn {
-  font-weight: 400;
+  font-weight: 500 !important;
 }
