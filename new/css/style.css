@@ -2474,49 +2474,43 @@ a.btn:hover,
 }
 
 
-/* update 46: story section image replacement / same-height frames
-   「企業情報＆テクノネットの物語」の左右画像を実画像に差し替えるための枠指定。
-   枠の高さは左右同じまま、画像は縦横比を維持して枠内に収める。 */
+/* update 47: story section image replacement - direct img structure fix
+   以前の visual-stadium.svg / visual-control.svg を直接差し替える方式に修正。
+   企業情報＆テクノネットの物語の左右2枠は同じ高さのまま、画像を枠内に収める。 */
+.story-grid {
+  align-items: stretch;
+}
+
 .story-card {
   align-items: stretch;
 }
 
-.story-card .story-image-frame {
-  width: 100%;
-  height: 100%;
-  min-height: 260px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 18px;
-  background: rgba(0, 0, 0, .18);
-  overflow: hidden;
-  box-sizing: border-box;
-}
-
-.story-card .story-image-frame img.story-image {
-  position: static !important;
-  display: block !important;
-  width: auto !important;
-  height: auto !important;
-  max-width: 100% !important;
-  max-height: 100% !important;
-  min-width: 0 !important;
-  min-height: 0 !important;
+.story-card > img.story-image {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 250px !important;
+  max-height: none !important;
   object-fit: contain !important;
+  object-position: center center !important;
+  box-sizing: border-box !important;
+  padding: 18px !important;
+  background: #000 !important;
   opacity: 1 !important;
-  flex: 0 0 auto;
   filter: brightness(.46) contrast(.82) saturate(.88) !important;
   transition: filter .35s ease, opacity .35s ease, transform .35s ease !important;
 }
 
-.story-card:hover .story-image-frame img.story-image,
-.story-card:focus-visible .story-image-frame img.story-image {
+.story-card:hover > img.story-image,
+.story-card:focus-visible > img.story-image {
   filter: brightness(1) contrast(1) saturate(1) !important;
 }
 
+.story-card > img.story-logo-image {
+  padding: 42px !important;
+}
+
 @media (max-width: 720px) {
-  .story-card .story-image-frame {
-    min-height: 220px;
+  .story-card > img.story-image {
+    min-height: 220px !important;
   }
 }
