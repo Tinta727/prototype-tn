@@ -1,8 +1,8 @@
-/* update_48: 小見出しアイコン修正版
-   - 直前に承認された7個のアイコン形状をPNG化して使用
-   - 既存 style.css の .outline-card > span の影響を避けるため、アイコン容器は div に変更
-   - 配置は「枠内・右上」
-   - 見出し・本文と重ならないように右側にアイコン用の逃げを作成
+/* update_48: 小見出しアイコン配置修正版
+   - ファイル名は update_48_icons.css のまま上書き
+   - アイコンは「枠内・右上」に配置
+   - テキスト幅を無理に狭めない。前回の縦書き状崩れを解消
+   - サービス・製品情報の枠内余白を均一化
 */
 
 /* 旧丸マークが残っていても非表示 */
@@ -10,23 +10,33 @@
   display: none !important;
 }
 
+/* 共通：カード内の基準位置 */
 .reason-grid .outline-card,
 .service-grid .outline-card {
   position: relative;
   overflow: hidden;
-  padding-top: 28px !important;
-  padding-right: 96px !important;
+  box-sizing: border-box;
 }
 
-/* 右上のアイコン */
+/* 理由セクション：テキストが細く崩れないように、幅制限をかけない */
+.reason-grid .outline-card {
+  padding: 30px 30px 34px !important;
+}
+
+/* サービスセクション：枠内全体のマージンを均一に */
+.service-grid .outline-card {
+  padding: 30px 30px 34px !important;
+}
+
+/* 右上アイコン */
 .tn-point-icon {
   position: absolute !important;
-  top: 18px !important;
-  right: 18px !important;
+  top: 24px !important;
+  right: 24px !important;
   left: auto !important;
   bottom: auto !important;
-  width: 56px;
-  height: 56px;
+  width: 48px;
+  height: 48px;
   margin: 0 !important;
   z-index: 1;
   pointer-events: none;
@@ -43,14 +53,14 @@
   object-fit: contain;
 }
 
-/* テキストはアイコン分の余白を確保 */
+/* テキストは幅を狭めない。z-indexだけ確保 */
 .reason-grid .outline-card h3,
 .reason-grid .outline-card p,
 .service-grid .outline-card h3,
 .service-grid .outline-card p {
   position: relative;
   z-index: 2;
-  max-width: calc(100% - 86px);
+  max-width: none !important;
 }
 
 .reason-grid .outline-card h3,
@@ -58,6 +68,19 @@
   margin-top: 0 !important;
 }
 
+/* 右上アイコンと長い見出しの干渉を避けるため、見出しだけ少し右側に逃げを作る */
+.reason-grid .outline-card h3,
+.service-grid .outline-card h3 {
+  padding-right: 64px;
+}
+
+/* 本文はアイコン下まで自然に広げる */
+.reason-grid .outline-card p,
+.service-grid .outline-card p {
+  padding-right: 0;
+}
+
+/* 右下矢印は既存位置を尊重しつつ、アイコンとは独立 */
 .reason-grid .outline-card > span:last-child,
 .service-grid .outline-card > span:last-child {
   position: absolute;
@@ -66,9 +89,23 @@
   z-index: 2;
 }
 
+/* サービス・製品情報は、文章とアイコンの間を詰める */
+.service-grid .tn-point-icon {
+  top: 28px !important;
+  right: 28px !important;
+  width: 44px;
+  height: 44px;
+}
+
+.service-grid .outline-card h3 {
+  padding-right: 58px;
+}
+
 .outline-card:hover .tn-point-icon,
 .outline-card:focus-visible .tn-point-icon {
-  filter: drop-shadow(0 0 10px rgba(237, 28, 36, .28)) drop-shadow(0 0 16px rgba(255, 241, 168, .10));
+  filter:
+    drop-shadow(0 0 10px rgba(237, 28, 36, .28))
+    drop-shadow(0 0 16px rgba(255, 241, 168, .10));
   transform: translateY(-1px);
   transition: filter .24s ease, transform .24s ease;
 }
@@ -76,37 +113,37 @@
 @media (max-width: 980px) {
   .reason-grid .outline-card,
   .service-grid .outline-card {
-    padding-right: 84px !important;
+    padding: 28px 28px 32px !important;
   }
+
   .tn-point-icon {
-    top: 16px !important;
-    right: 16px !important;
-    width: 50px;
-    height: 50px;
+    top: 22px !important;
+    right: 22px !important;
+    width: 44px;
+    height: 44px;
   }
+
   .reason-grid .outline-card h3,
-  .reason-grid .outline-card p,
-  .service-grid .outline-card h3,
-  .service-grid .outline-card p {
-    max-width: calc(100% - 74px);
+  .service-grid .outline-card h3 {
+    padding-right: 58px;
   }
 }
 
 @media (max-width: 640px) {
   .reason-grid .outline-card,
   .service-grid .outline-card {
-    padding-right: 28px !important;
+    padding: 28px 28px 32px !important;
   }
+
   .tn-point-icon {
     position: static !important;
     width: 54px;
     height: 54px;
     margin: 0 0 14px 0 !important;
   }
+
   .reason-grid .outline-card h3,
-  .reason-grid .outline-card p,
-  .service-grid .outline-card h3,
-  .service-grid .outline-card p {
-    max-width: 100%;
+  .service-grid .outline-card h3 {
+    padding-right: 0;
   }
 }
