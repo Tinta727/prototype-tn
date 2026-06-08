@@ -9,18 +9,41 @@
   <link rel="stylesheet" href="css/update_48_icons.css?v=48">
 
 <style>
-/* 背景比較用：このHTML内だけで有効 */
+/* 背景比較用：このHTML内だけで有効
+   修正点：
+   - canvas が body 背景の背面に回って見えなくなる問題を回避
+   - canvas を画面内 z-index:0 に置き、本文を z-index:2 に上げる
+*/
+html, body {
+  min-height: 100%;
+}
+
+body {
+  position: relative;
+  isolation: isolate;
+}
+
 #dataWave {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -3;
-  pointer-events: none;
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
 }
+
 .site-noise {
-  z-index: -2;
+  z-index: 1 !important;
+  pointer-events: none !important;
 }
+
+.site-header,
+main,
+.site-footer {
+  position: relative;
+  z-index: 2;
+}
+
 .bg-variant-label {
   position: fixed;
   left: 18px;
@@ -267,14 +290,17 @@
 (() => {
   const MODE = "sports";
   const canvas = document.getElementById("dataWave");
+  if (!canvas) return;
   const ctx = canvas.getContext("2d", { alpha: true });
+  if (!ctx) return;
+
   let width = 0, height = 0, dpr = 1, time = 0, particles = [];
   const red = "rgba(237, 28, 36, ";
 
   function resize() {
     dpr = Math.min(window.devicePixelRatio || 1, 2);
     width = window.innerWidth;
-    height = Math.max(window.innerHeight, document.documentElement.scrollHeight, document.body.scrollHeight);
+    height = window.innerHeight;
     canvas.width = Math.floor(width * dpr);
     canvas.height = Math.floor(height * dpr);
     canvas.style.width = width + "px";
@@ -288,17 +314,17 @@
   }
 
   function initParticles() {
-    const count = width < 700 ? 24 : 44;
+    const count = width < 700 ? 22 : 42;
     const dataGlyphs = ["0", "1", "7", "9", "10", "21", "24", "45", "90", "99"];
     const sportsGlyphs = ["⚾", "🏀", "⚽", "🏐", "🏸", "🎾", "🏓", "21", "99"];
     const glyphs = MODE === "sports" ? sportsGlyphs : dataGlyphs;
 
     particles = Array.from({ length: count }, (_, i) => ({
       x: rand(-width, width),
-      y: rand(40, height - 40),
-      speed: rand(0.08, 0.32) * (MODE === "sports" ? 0.85 : 1),
-      size: rand(12, 26),
-      alpha: rand(0.08, 0.22),
+      y: rand(30, height - 30),
+      speed: rand(0.10, 0.34) * (MODE === "sports" ? 0.85 : 1),
+      size: rand(12, 25),
+      alpha: rand(0.10, 0.24),
       phase: rand(0, Math.PI * 2),
       glyph: glyphs[i % glyphs.length],
       kind: i % 4
@@ -321,7 +347,7 @@
     }
 
     ctx.strokeStyle = red + alpha + ")";
-    ctx.lineWidth = 1.15;
+    ctx.lineWidth = 1.2;
     ctx.stroke();
 
     ctx.strokeStyle = red + (alpha * 1.35) + ")";
@@ -341,14 +367,14 @@
   function drawParticle(p) {
     const x = p.x;
     const y = p.y + Math.sin(time * 0.015 + p.phase) * 12;
-    const a = Math.max(0.03, p.alpha * (0.75 + Math.sin(time * 0.012 + p.phase) * 0.25));
+    const a = Math.max(0.04, p.alpha * (0.78 + Math.sin(time * 0.012 + p.phase) * 0.22));
 
     ctx.save();
     ctx.translate(x, y);
     ctx.globalAlpha = a;
     ctx.strokeStyle = red + "1)";
     ctx.fillStyle = red + "1)";
-    ctx.lineWidth = 1.4;
+    ctx.lineWidth = 1.5;
     ctx.font = `${p.size}px "Hiragino Sans", "Yu Gothic", sans-serif`;
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
@@ -402,9 +428,9 @@
   function drawBackground() {
     ctx.clearRect(0, 0, width, height);
 
-    const grad = ctx.createRadialGradient(width * 0.5, height * 0.25, 0, width * 0.5, height * 0.35, Math.max(width, height) * 0.8);
-    grad.addColorStop(0, "rgba(237,28,36,0.030)");
-    grad.addColorStop(0.55, "rgba(80,0,0,0.015)");
+    const grad = ctx.createRadialGradient(width * 0.5, height * 0.28, 0, width * 0.5, height * 0.35, Math.max(width, height) * 0.85);
+    grad.addColorStop(0, "rgba(237,28,36,0.045)");
+    grad.addColorStop(0.55, "rgba(80,0,0,0.020)");
     grad.addColorStop(1, "rgba(0,0,0,0)");
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, width, height);
@@ -415,14 +441,14 @@
       drawPulseLine(
         y + Math.sin(i * 2.1) * 18,
         MODE === "data" ? 22 + i * 1.8 : 28 + i * 2.5,
-        MODE === "data" ? 0.26 + i * 0.02 : 0.20 + i * 0.015,
-        MODE === "data" ? 0.17 : 0.14,
+        MODE === "data" ? 0.28 + i * 0.02 : 0.22 + i * 0.015,
+        MODE === "data" ? 0.23 : 0.18,
         i * 137,
         i * 0.7
       );
     }
 
-    ctx.strokeStyle = red + (MODE === "data" ? "0.16)" : "0.10)");
+    ctx.strokeStyle = red + (MODE === "data" ? "0.18)" : "0.13)");
     ctx.lineWidth = 1;
     for (let i = 0; i < 5; i++) {
       const y = (height * (0.18 + i * 0.16)) + Math.sin(time * 0.006 + i) * 10;
@@ -441,7 +467,7 @@
       p.x += p.speed;
       if (p.x > width + 60) {
         p.x = rand(-360, -60);
-        p.y = rand(40, height - 40);
+        p.y = rand(30, height - 30);
       }
       drawParticle(p);
     }
@@ -473,11 +499,13 @@
   window.addEventListener("resize", resize, { passive: true });
   resize();
   initCommonSiteScript();
-  requestAnimationFrame(function tick() {
+
+  function tick() {
     time += 1;
     drawBackground();
     requestAnimationFrame(tick);
-  });
+  }
+  requestAnimationFrame(tick);
 })();
 </script>
 
