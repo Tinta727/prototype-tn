@@ -1,0 +1,35 @@
+/* 背景案A/B 共通追加CSS
+   - 既存 new/ のCSSを再利用し、このディレクトリでは背景だけ差し替える
+   - 既存 new/ は変更しない
+*/
+
+#dataWave {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -3;
+  pointer-events: none;
+}
+
+.site-noise {
+  z-index: -2;
+}
+
+.bg-variant-label {
+  position: fixed;
+  left: 18px;
+  bottom: 14px;
+  z-index: 50;
+  font-size: 11px;
+  letter-spacing: .18em;
+  color: rgba(255, 255, 255, .34);
+  pointer-events: none;
+  writing-mode: horizontal-tb;
+}
+
+@media (max-width: 640px) {
+  .bg-variant-label {
+    display: none;
+  }
+}
