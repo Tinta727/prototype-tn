@@ -1893,3 +1893,169 @@ a.btn:hover,
     justify-content: flex-start !important;
   }
 }
+
+
+/* update 36: Idea 1 button design
+   対象:
+   1) ヘッダー「お問い合わせ」
+   2) トピックス「一覧」
+   3) トピックス「お知らせ」
+   4) トピックス「更新情報」
+   5) 採用CTA「採用情報を見る」
+   6) フッター「お問い合わせ」
+
+   方針:
+   - サイズ・配置は update_35 のまま
+   - 赤グラデーション＋白アウトライン＋内側グロー
+   - 主要CTAには右側矢印を疑似要素で追加
+*/
+
+:root {
+  --tn-btn-red-top: #f51b26;
+  --tn-btn-red-mid: #c90010;
+  --tn-btn-red-bottom: #8f0008;
+  --tn-btn-red-hover-top: #fff7c8;
+  --tn-btn-red-hover-bottom: #ffe26a;
+  --tn-btn-white-line: rgba(255,255,255,.9);
+  --tn-btn-inner-glow: rgba(255,255,255,.18);
+  --tn-btn-red-glow: rgba(230,0,18,.36);
+}
+
+.global-nav .contact-link,
+.topic-item b,
+.recruit-cta > .btn-primary,
+.site-footer .footer-btn {
+  position: relative !important;
+  overflow: hidden !important;
+  isolation: isolate;
+  box-sizing: border-box !important;
+  background:
+    linear-gradient(180deg, var(--tn-btn-red-top) 0%, var(--tn-btn-red-mid) 48%, var(--tn-btn-red-bottom) 100%) !important;
+  border: 1px solid var(--tn-btn-white-line) !important;
+  color: #fff !important;
+  text-shadow: 0 1px 8px rgba(0,0,0,.35);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.36),
+    inset 0 -16px 28px rgba(0,0,0,.18),
+    inset 0 0 18px var(--tn-btn-inner-glow),
+    0 0 18px var(--tn-btn-red-glow) !important;
+  clip-path: polygon(
+    10px 0,
+    calc(100% - 10px) 0,
+    100% 10px,
+    100% calc(100% - 10px),
+    calc(100% - 10px) 100%,
+    10px 100%,
+    0 calc(100% - 10px),
+    0 10px
+  );
+}
+
+/* 光沢の薄いスイープ。サイズには影響しません。 */
+.global-nav .contact-link::before,
+.topic-item b::before,
+.recruit-cta > .btn-primary::before,
+.site-footer .footer-btn::before {
+  content: "";
+  position: absolute;
+  inset: -70% auto -70% -45%;
+  z-index: -1;
+  width: 42%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.24), transparent);
+  transform: skewX(-22deg);
+  opacity: .5;
+  transition: left .45s ease, opacity .45s ease;
+}
+
+/* 主要CTAの右矢印。HTML上の幅や高さは変えません。 */
+.global-nav .contact-link::after,
+.recruit-cta > .btn-primary::after,
+.site-footer .footer-btn::after {
+  content: "→";
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  transform: translateY(-52%);
+  font-size: 1.55em;
+  font-weight: 300;
+  line-height: 1;
+  color: currentColor;
+  transition: transform .24s ease;
+}
+
+.global-nav .contact-link {
+  padding-right: 58px !important;
+}
+
+.recruit-cta > .btn-primary,
+.site-footer .footer-btn {
+  padding-right: 58px !important;
+}
+
+/* トピックス内の3ラベルは、行右端の既存矢印を活かすためラベル内矢印は追加しない */
+.topic-item b {
+  border-color: rgba(255,255,255,.78) !important;
+}
+
+/* hover / focus: 既存指定の「淡い黄色」方向を保ちつつ、Idea 1の立体感を維持 */
+.global-nav .contact-link:hover,
+.global-nav .contact-link:focus-visible,
+.recruit-cta > .btn-primary:hover,
+.recruit-cta > .btn-primary:focus-visible,
+.site-footer .footer-btn:hover,
+.site-footer .footer-btn:focus-visible,
+.topic-item:hover b,
+.topic-item:focus-visible b {
+  background:
+    linear-gradient(180deg, var(--tn-btn-red-hover-top) 0%, var(--tn-btn-red-hover-bottom) 100%) !important;
+  border-color: var(--yellow) !important;
+  color: #111 !important;
+  text-shadow: none;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.82),
+    inset 0 0 20px rgba(255,255,255,.32),
+    0 0 28px rgba(255,241,168,.28) !important;
+}
+
+.global-nav .contact-link:hover::before,
+.global-nav .contact-link:focus-visible::before,
+.topic-item:hover b::before,
+.topic-item:focus-visible b::before,
+.recruit-cta > .btn-primary:hover::before,
+.recruit-cta > .btn-primary:focus-visible::before,
+.site-footer .footer-btn:hover::before,
+.site-footer .footer-btn:focus-visible::before {
+  left: 112%;
+  opacity: .9;
+}
+
+.global-nav .contact-link:hover::after,
+.global-nav .contact-link:focus-visible::after,
+.recruit-cta > .btn-primary:hover::after,
+.recruit-cta > .btn-primary:focus-visible::after,
+.site-footer .footer-btn:hover::after,
+.site-footer .footer-btn:focus-visible::after {
+  transform: translate(5px, -52%);
+}
+
+/* update_35で固定した採用CTA・フッターCTAのサイズは維持 */
+.recruit-cta > .btn-primary {
+  min-width: 260px !important;
+  min-height: 78px !important;
+}
+
+.site-footer .footer-btn {
+  width: 260px !important;
+  min-width: 260px !important;
+  max-width: 260px !important;
+  height: 78px !important;
+  min-height: 78px !important;
+  max-height: 78px !important;
+}
+
+@media (max-width: 980px) {
+  .global-nav .contact-link {
+    padding-right: 58px !important;
+  }
+}
+
