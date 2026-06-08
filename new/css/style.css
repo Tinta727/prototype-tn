@@ -2378,3 +2378,47 @@ a.btn:hover,
   color: #000 !important;
   -webkit-text-fill-color: #000 !important;
 }
+
+/* update 43: project achievement images */
+.case-card .case-image-frame {
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  background: rgba(0, 0, 0, .18);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.case-grid-featured .case-card-main .case-image-frame {
+  min-height: 360px;
+}
+
+.case-grid-featured .case-card-half .case-image-frame {
+  min-height: 280px;
+}
+
+.case-card .case-image-frame img.project-image {
+  position: static !important;
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  object-fit: contain !important;
+  opacity: 1 !important;
+  flex: 0 0 auto;
+}
+
+@media (max-width: 720px) {
+  .case-card .case-image-frame,
+  .case-grid-featured .case-card-main .case-image-frame,
+  .case-grid-featured .case-card-half .case-image-frame {
+    min-height: 220px;
+  }
+}
