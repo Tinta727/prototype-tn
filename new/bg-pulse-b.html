@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>株式会社テクノネット | スポーツDXの<br>コア・パートナー</title>
+  <meta name="description" content="株式会社テクノネット新サイトTOPページの静的HTML/CSS/JSモックアップです。">
+  <link rel="stylesheet" href="css/style.css?v=47">
+  <link rel="stylesheet" href="css/update_48_icons.css?v=48">
+
+<style>
+/* 背景比較用：このHTML内だけで有効 */
+#dataWave {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -3;
+  pointer-events: none;
+}
+.site-noise {
+  z-index: -2;
+}
+.bg-variant-label {
+  position: fixed;
+  left: 18px;
+  bottom: 14px;
+  z-index: 50;
+  font-size: 11px;
+  letter-spacing: .18em;
+  color: rgba(255,255,255,.34);
+  pointer-events: none;
+}
+@media (max-width: 640px) {
+  .bg-variant-label { display: none; }
+}
+</style>
+
+</head>
+<body>
+  <canvas id="dataWave" aria-hidden="true"></canvas>
+  <div class="site-noise" aria-hidden="true"></div>
+  <div class="bg-variant-label" aria-hidden="true">背景案B：パルス×スポーツ</div>
+
+  <header class="site-header">
+    <a href="#" class="brand hoverable" aria-label="TECHNONET HOME">
+      <img src="assets/technonet-logo-horizontal-inverted.png" alt="TECHNONET" class="brand-logo">
+    </a>
+    <button class="nav-toggle hoverable" type="button" aria-controls="globalNav" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="globalNav" class="global-nav">
+      <a class="hoverable" href="#solutions">ソリューション</a>
+      <a class="hoverable" href="#reason">任せる理由</a>
+      <a class="hoverable" href="#projects">導入実績</a>
+      <a class="hoverable" href="#services">サービス・製品情報</a>
+      <a class="hoverable" href="#company">企業情報</a>
+      <a class="hoverable" href="#topics">トピックス</a>
+      <a class="hoverable" href="#recruit">採用情報</a>
+      <a class="contact-link hoverable" href="#contact"><span class="btn-label">お問い合わせ</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero section-observe">
+      <div class="hero-visual" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <p class="eyebrow">SPORTS DX CORE PARTNER</p>
+        <h1>スポーツDXの<br>コア・パートナー</h1>
+        <p class="hero-lead">「機能の提供」から「未来の共創」へ。</p>
+        <p class="hero-copy">競技会運営から放送・配信・<br>スタジアムビジョン表示まで、<br>テクノネットはスポーツDX・スタッツ基盤をユーザー目線で支えます。</p>
+      </div>
+      <a href="#solutions" class="scroll-cue hoverable" aria-label="下へスクロール"></a>
+    </section>
+
+    <section id="solutions" class="section section-observe">
+      <div class="section-heading">
+        <span>SOLUTIONS</span>
+        <h2>ソリューション</h2>
+      </div>
+      <div class="solution-grid">
+        <a class="feature-card large hoverable" href="#">
+          <span class="card-number">01</span>
+          <h3>スポーツ競技会の<br>運営を革新する<br>競技ルールの深層理解</h3>
+          <p>多くのスポーツ、競技団体に関わってきた知見をもとに、ルールや運営の文脈を理解してシステムを構築します。</p>
+          <img src="assets/visual-network.svg" alt="">
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="feature-card large hoverable" href="#">
+          <span class="card-number">02</span>
+          <h3>「開発」と「運用の」<br>完全融合</h3>
+          <p>スポーツイベント・エンタメの「コア」を担う経験と技術。現場のフローに合わせて最適化し、確実に稼働させます。</p>
+          <img src="assets/visual-control.svg" alt="">
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="feature-card large hoverable" href="#">
+          <span class="card-number">03</span>
+          <h3>放送・配信・<br>スタジアムビジョン表示の<br>戦略的パートナー</h3>
+          <p>放送局クオリティのCG／テロップと、ビジョン表示システム・アプリで、スポーツ競技やイベント放送・配信を支援します。</p>
+          <img src="assets/visual-stadium.svg" alt="">
+          <span class="card-arrow">→</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="reason" class="section section-observe">
+      <div class="section-heading">
+        <span>REASON</span>
+        <h2>テクノネットに任せる理由</h2>
+      </div>
+      <div class="reason-grid">
+        <a class="outline-card hoverable" href="#">
+          <div class="tn-point-icon" aria-hidden="true"><img src="assets/icons/icon-fde.png" alt=""></div>
+          <h3>FDE:<br>最前線展開型<br>エンジニアリングモデル</h3>
+          <p>仕様書通りにアプリを作る会社を超え、現場に入り込み、課題を認識し、解決しながらシステムを進化させます。</p>
+          <span>→</span>
+        </a>
+        <a class="outline-card hoverable" href="#">
+          <div class="tn-point-icon" aria-hidden="true"><img src="assets/icons/icon-requirements.png" alt=""></div>
+          <h3>曖昧な要件の<br>吸収・理解</h3>
+          <p>競技団体やユーザーの「やりたいこと」を深層理解し、経験や知見をもとに要件を定義します。</p>
+          <span>→</span>
+        </a>
+        <a class="outline-card hoverable" href="#">
+          <div class="tn-point-icon" aria-hidden="true"><img src="assets/icons/icon-data-handling.png" alt=""></div>
+          <h3>高度な<br>データハンドリング<br>技術</h3>
+          <p>試合・選手関連の刻一刻と変わるデータを即時・確実に受信し描画。大会運営と観戦体験を支えます。</p>
+          <span>→</span>
+        </a>
+        <a class="outline-card hoverable" href="#">
+          <div class="tn-point-icon" aria-hidden="true"><img src="assets/icons/icon-remote-overip.png" alt=""></div>
+          <h3>リモート<br>プロダクション・<br>OverIP 対応技術</h3>
+          <p>次世代メディア・<br>放送ソリューションとして、Over IPやクラウド化にも対応する体制を整えます。</p>
+          <span>→</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="projects" class="section section-observe">
+      <div class="section-heading">
+        <span>ACHIEVEMENTS</span>
+        <h2>プロジェクト導入実績</h2>
+      </div>
+      <div class="case-grid case-grid-featured">
+        <a class="case-card case-card-main birdscore-card hoverable" href="#">
+          <div class="case-image-frame"><img class="project-image birdscore-image" src="assets/BIRDSCORE_top.jpg" alt="BIRD SCORE"></div>
+          <div>
+            <h3>BIRD SCORE</h3>
+            <p>バドミントンのライブスコア／大会管理／コートサイド表示／Web速報を支えるスコアリングシステム。</p>
+            <span>導入実績を見る →</span>
+          </div>
+        </a>
+        <a class="case-card case-card-half hoverable" href="#">
+          <div class="case-image-frame"><img class="project-image" src="assets/nagoya_top.jpg" alt="バンテリンドーム ナゴヤ"></div>
+          <div>
+            <h3>バンテリンドーム<br>ナゴヤ</h3>
+            <p>スタジアムの大型ビジョン表示や演出を支える、ビジョン表示システム・運用支援。</p>
+            <span>導入実績を見る →</span>
+          </div>
+        </a>
+        <a class="case-card case-card-half hoverable" href="#">
+          <div class="case-image-frame"><img class="project-image" src="assets/elec_top.jpg" alt="選挙開票速報システム"></div>
+          <div>
+            <h3>選挙開票速報システム</h3>
+            <p>選挙開票に関するリアルタイムデータを処理し、放送・配信・番組演出に活用する速報システム。</p>
+            <span>導入実績を見る →</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section id="services" class="section section-observe">
+      <div class="section-heading">
+        <span>SERVICE</span>
+        <h2>サービス・製品情報</h2>
+      </div>
+      <div class="service-grid">
+        <a class="outline-card hoverable" href="#">
+          <div class="tn-point-icon" aria-hidden="true"><img src="assets/icons/icon-technical-service.png" alt=""></div>
+          <h3>技術サービス</h3>
+          <p>スポーツCGサービス、スポーツ情報サービス、ライブ動画配信、スポーツ・イベント映像制作などを提供します。</p>
+          <span>→</span>
+        </a>
+        <a class="outline-card hoverable" href="#">
+          <div class="tn-point-icon" aria-hidden="true"><img src="assets/icons/icon-product-software.png" alt=""></div>
+          <h3>製品・ソフトウェア情報</h3>
+          <p>VFEXシリーズ、その他製品、ソフトウェアなど、現場の運用を支える製品群を紹介します。</p>
+          <span>→</span>
+        </a>
+        <a class="outline-card hoverable" href="#">
+          <div class="tn-point-icon" aria-hidden="true"><img src="assets/icons/icon-next-media.png" alt=""></div>
+          <h3>次世代メディア・<br>放送ソリューション</h3>
+          <p>Over IP、クラウド化など、放送・配信環境の変化に対応するソリューションを検討・展開します。</p>
+          <span>→</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="company" class="section section-observe">
+      <div class="section-heading">
+        <span>STORY</span>
+        <h2>企業情報＆<br>テクノネットの物語</h2>
+      </div>
+      <div class="story-grid">
+        <a class="story-card story-card-netseries hoverable" href="#">
+          <img class="story-image story-netseries-image" src="assets/2021NetシリーズP1.png" alt="2021Netシリーズ">
+          <div>
+            <h3>テクノネットの物語：<br>スポーツ中継と共に歩んだ40余年</h3>
+            <p>企業文化や社歴を含め、「機能の提供」から「未来の共創」へ向かうテクノネットの歩みを紹介します。</p>
+            <span>詳しく見る →</span>
+          </div>
+        </a>
+        <a class="story-card story-card-logo hoverable" href="#">
+          <img class="story-image story-logo-image" src="assets/テクノネットロゴ縦_白黒反転.png" alt="テクノネットロゴ">
+          <div>
+            <h3>企業情報／アクセス<br>情報セキュリティへの取り組み</h3>
+            <p>企業情報、アクセス、ISO27001認証取得、情報セキュリティ基本方針、個人情報保護ポリシーを掲載します。</p>
+            <span>詳しく見る →</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section id="topics" class="section section-observe">
+      <div class="section-heading">
+        <span>TOPICS</span>
+        <h2>トピックス</h2>
+      </div>
+      <div class="topics-list">
+        <a class="topic-item hoverable" href="#"><time>TOPICS</time><b><span class="btn-label">一覧</span></b><p>トピックス一覧</p><span>→</span></a>
+        <a class="topic-item hoverable" href="#"><time>NEWS</time><b><span class="btn-label">お知らせ</span></b><p>導入実績、サービス・製品情報、企業情報に関するお知らせを掲載します。</p><span>→</span></a>
+        <a class="topic-item hoverable" href="#"><time>INFO</time><b><span class="btn-label">更新情報</span></b><p>新しい取り組みやプロジェクトの情報を順次公開します。</p><span>→</span></a>
+      </div>
+    </section>
+
+    <section id="recruit" class="recruit-cta section-observe">
+      <div>
+        <h2>スポーツの未来を、実装せよ</h2>
+        <p>熱狂の、その先を、テクノネットで創ろう。数百万人が見るライブスポーツの現場で、自分の手掛けたシステムが実際に稼働する体験を。</p>
+      </div>
+      <a class="btn-primary hoverable" href="#"><span class="btn-label">採用情報を見る</span></a>
+    </section>
+  </main>
+
+  <footer id="contact" class="site-footer">
+    <div class="footer-brand">
+      <a href="#" class="brand hoverable">
+        <img src="assets/technonet-logo-horizontal-inverted.png" alt="TECHNONET" class="brand-logo">
+      </a>
+    </div>
+    <div class="footer-links">
+      <div><h3>ソリューション</h3><a href="#">競技ルールの深層理解</a><a href="#">「開発」と「運用の」<br>完全融合</a><a href="#">放送・配信・<br>スタジアムビジョン表示</a></div>
+      <div><h3>サービス・製品情報</h3><a href="#">技術サービス</a><a href="#">製品・ソフトウェア情報</a><a href="#">VFEXシリーズ</a></div>
+      <div><h3>企業情報</h3><a href="#">テクノネットの物語</a><a href="#">企業情報／アクセス</a><a href="#">情報セキュリティへの取り組み</a></div>
+      <div><h3>採用情報</h3><a href="#">スポーツの未来を、実装せよ</a><a href="#">テクノネットで働く魅力</a><a href="#">募集要項</a></div>
+    </div>
+    <div class="footer-actions">
+      <a class="footer-btn hoverable" href="#"><span class="btn-label">お問い合わせ</span></a>
+    </div>
+    <div class="footer-bottom">
+      <small class="copyright">Copyright © <span id="currentYear">2026</span> TECHNONET CO.,LTD. All Rights Reserved.</small>
+    </div>
+  </footer>
+
+  
+<script>
+(() => {
+  const MODE = "sports";
+  const canvas = document.getElementById("dataWave");
+  const ctx = canvas.getContext("2d", { alpha: true });
+  let width = 0, height = 0, dpr = 1, time = 0, particles = [];
+  const red = "rgba(237, 28, 36, ";
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    width = window.innerWidth;
+    height = Math.max(window.innerHeight, document.documentElement.scrollHeight, document.body.scrollHeight);
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    canvas.style.width = width + "px";
+    canvas.style.height = height + "px";
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    initParticles();
+  }
+
+  function rand(min, max) {
+    return min + Math.random() * (max - min);
+  }
+
+  function initParticles() {
+    const count = width < 700 ? 24 : 44;
+    const dataGlyphs = ["0", "1", "7", "9", "10", "21", "24", "45", "90", "99"];
+    const sportsGlyphs = ["⚾", "🏀", "⚽", "🏐", "🏸", "🎾", "🏓", "21", "99"];
+    const glyphs = MODE === "sports" ? sportsGlyphs : dataGlyphs;
+
+    particles = Array.from({ length: count }, (_, i) => ({
+      x: rand(-width, width),
+      y: rand(40, height - 40),
+      speed: rand(0.08, 0.32) * (MODE === "sports" ? 0.85 : 1),
+      size: rand(12, 26),
+      alpha: rand(0.08, 0.22),
+      phase: rand(0, Math.PI * 2),
+      glyph: glyphs[i % glyphs.length],
+      kind: i % 4
+    }));
+  }
+
+  function drawPulseLine(baseY, amp, speed, alpha, offset, angular) {
+    const segment = 72;
+    const step = 18;
+    ctx.beginPath();
+
+    for (let x = -80; x <= width + 80; x += step) {
+      const shifted = x + time * speed + offset;
+      const wave = Math.sin(shifted * 0.006 + angular) * amp;
+      const saw = ((Math.floor((shifted + 400) / segment) % 6) - 2.5) * 2.2;
+      const pulse = (Math.floor((shifted + 300) / segment) % 7 === 0) ? -amp * 0.75 : 0;
+      const y = baseY + wave + saw + pulse;
+      if (x === -80) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+
+    ctx.strokeStyle = red + alpha + ")";
+    ctx.lineWidth = 1.15;
+    ctx.stroke();
+
+    ctx.strokeStyle = red + (alpha * 1.35) + ")";
+    ctx.lineWidth = 1;
+    for (let x = -80; x <= width + 80; x += segment * 2) {
+      const sx = x + (time * speed * 0.9 + offset) % (segment * 2);
+      const y = baseY + Math.sin((sx + offset) * 0.006 + angular) * amp;
+      if (sx > -20 && sx < width + 20) {
+        ctx.beginPath();
+        ctx.moveTo(sx, y - 7);
+        ctx.lineTo(sx, y + 7);
+        ctx.stroke();
+      }
+    }
+  }
+
+  function drawParticle(p) {
+    const x = p.x;
+    const y = p.y + Math.sin(time * 0.015 + p.phase) * 12;
+    const a = Math.max(0.03, p.alpha * (0.75 + Math.sin(time * 0.012 + p.phase) * 0.25));
+
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.globalAlpha = a;
+    ctx.strokeStyle = red + "1)";
+    ctx.fillStyle = red + "1)";
+    ctx.lineWidth = 1.4;
+    ctx.font = `${p.size}px "Hiragino Sans", "Yu Gothic", sans-serif`;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+
+    if (MODE === "data") {
+      if (p.kind === 0) {
+        ctx.fillText(p.glyph, 0, 0);
+      } else if (p.kind === 1) {
+        ctx.beginPath();
+        ctx.rect(-p.size * .42, -p.size * .28, p.size * .84, p.size * .56);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(-p.size * .58, 0);
+        ctx.lineTo(-p.size * .88, 0);
+        ctx.moveTo(p.size * .58, 0);
+        ctx.lineTo(p.size * .88, 0);
+        ctx.stroke();
+      } else {
+        ctx.beginPath();
+        ctx.arc(0, 0, p.size * .34, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.fillText(p.glyph, 0, p.size * .02);
+      }
+    } else {
+      if (/[0-9]/.test(p.glyph)) {
+        ctx.fillText(p.glyph, 0, 0);
+      } else if (p.kind === 0) {
+        ctx.fillText(p.glyph, 0, 0);
+      } else if (p.kind === 1) {
+        ctx.beginPath();
+        ctx.arc(0, 0, p.size * .38, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(-p.size * .28, -p.size * .18);
+        ctx.quadraticCurveTo(0, 0, p.size * .28, p.size * .18);
+        ctx.stroke();
+      } else if (p.kind === 2) {
+        ctx.beginPath();
+        ctx.moveTo(-p.size * .25, -p.size * .35);
+        ctx.lineTo(p.size * .3, p.size * .35);
+        ctx.moveTo(p.size * .02, -p.size * .32);
+        ctx.lineTo(p.size * .45, p.size * .1);
+        ctx.stroke();
+      } else {
+        ctx.fillText(p.glyph, 0, 0);
+      }
+    }
+    ctx.restore();
+  }
+
+  function drawBackground() {
+    ctx.clearRect(0, 0, width, height);
+
+    const grad = ctx.createRadialGradient(width * 0.5, height * 0.25, 0, width * 0.5, height * 0.35, Math.max(width, height) * 0.8);
+    grad.addColorStop(0, "rgba(237,28,36,0.030)");
+    grad.addColorStop(0.55, "rgba(80,0,0,0.015)");
+    grad.addColorStop(1, "rgba(0,0,0,0)");
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, width, height);
+
+    const lineCount = MODE === "data" ? 8 : 6;
+    for (let i = 0; i < lineCount; i++) {
+      const y = (height / (lineCount + 1)) * (i + 1);
+      drawPulseLine(
+        y + Math.sin(i * 2.1) * 18,
+        MODE === "data" ? 22 + i * 1.8 : 28 + i * 2.5,
+        MODE === "data" ? 0.26 + i * 0.02 : 0.20 + i * 0.015,
+        MODE === "data" ? 0.17 : 0.14,
+        i * 137,
+        i * 0.7
+      );
+    }
+
+    ctx.strokeStyle = red + (MODE === "data" ? "0.16)" : "0.10)");
+    ctx.lineWidth = 1;
+    for (let i = 0; i < 5; i++) {
+      const y = (height * (0.18 + i * 0.16)) + Math.sin(time * 0.006 + i) * 10;
+      ctx.beginPath();
+      ctx.moveTo(-60, y);
+      for (let x = -60; x < width + 80; x += 96) {
+        const notch = ((x + time * 0.18 + i * 90) % 384 < 96) ? 10 : 0;
+        ctx.lineTo(x + 58, y);
+        ctx.lineTo(x + 70, y - notch);
+        ctx.lineTo(x + 92, y - notch);
+      }
+      ctx.stroke();
+    }
+
+    for (const p of particles) {
+      p.x += p.speed;
+      if (p.x > width + 60) {
+        p.x = rand(-360, -60);
+        p.y = rand(40, height - 40);
+      }
+      drawParticle(p);
+    }
+  }
+
+  function initCommonSiteScript() {
+    const toggle = document.querySelector(".nav-toggle");
+    const nav = document.getElementById("globalNav");
+    if (toggle && nav) {
+      toggle.addEventListener("click", () => {
+        const expanded = toggle.getAttribute("aria-expanded") === "true";
+        toggle.setAttribute("aria-expanded", String(!expanded));
+        nav.classList.toggle("is-open", !expanded);
+      });
+    }
+
+    const year = document.getElementById("currentYear");
+    if (year) year.textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add("is-visible");
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll(".section-observe").forEach((el) => observer.observe(el));
+  }
+
+  window.addEventListener("resize", resize, { passive: true });
+  resize();
+  initCommonSiteScript();
+  requestAnimationFrame(function tick() {
+    time += 1;
+    drawBackground();
+    requestAnimationFrame(tick);
+  });
+})();
+</script>
+
+</body>
+</html>
