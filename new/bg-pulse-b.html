@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="css/update_48_icons.css?v=48">
 
 <style>
+/* update_54: 背景B案 オブジェクト移動速度2倍 */
 /* 背景比較用：明るさ調整版
    修正点：
    - A/Bとも背景を全体的に明るく
@@ -63,7 +64,7 @@ main,
 <body>
   <canvas id="dataWave" aria-hidden="true"></canvas>
   <div class="site-noise" aria-hidden="true"></div>
-  <div class="bg-variant-label" aria-hidden="true">背景案B：パルス×スポーツ</div>
+  <div class="bg-variant-label" aria-hidden="true">背景案B：パルス×スポーツ / update_54</div>
 
   <header class="site-header">
     <a href="#" class="brand hoverable" aria-label="TECHNONET HOME">
@@ -470,7 +471,7 @@ main,
     }
 
     for (const p of particles) {
-      p.x += p.speed;
+      p.x += p.speed * 2; // update_54: 浮遊オブジェクトの横移動を2倍速
       if (p.x > width + 60) {
         p.x = rand(-360, -60);
         p.y = rand(30, height - 30);
