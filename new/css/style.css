@@ -2360,3 +2360,21 @@ a.btn:hover,
   color: #000 !important;
   -webkit-text-fill-color: #000 !important;
 }
+
+/* update 42: restore TOPICS label font size
+   update 41 revisedで .btn-label を span で追加したため、既存の .topic-item span { font-size: 1.4rem; } が
+   [一覧][お知らせ][更新情報] の文字にも効いてしまっていた問題を修正。
+   トピックス内の赤ボタンラベルだけ、元の .topic-item b と同じ .78rem に戻す。
+   サイズ・配置・hover時の黒文字指定は変更しない。 */
+.topic-item b .btn-label {
+  font-size: .78rem !important;
+  line-height: inherit !important;
+  color: inherit !important;
+  -webkit-text-fill-color: currentColor !important;
+}
+
+.topic-item:hover b .btn-label,
+.topic-item:focus-visible b .btn-label {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+}
