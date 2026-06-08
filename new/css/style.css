@@ -2422,3 +2422,34 @@ a.btn:hover,
     min-height: 220px;
   }
 }
+
+
+/* update 44: replace BIRD SCORE visual and tune vertical spacing to better match the other two project images */
+.case-grid-featured .birdscore-card {
+  grid-template-columns: 58% 1fr;
+}
+
+.case-grid-featured .birdscore-card .case-image-frame {
+  min-height: 360px;
+  padding: 18px;
+}
+
+.case-grid-featured .birdscore-card .case-image-frame img.birdscore-image {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+}
+
+@media (max-width: 980px) {
+  .case-grid-featured .birdscore-card {
+    grid-template-columns: 45% 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .case-grid-featured .birdscore-card {
+    grid-template-columns: 1fr;
+  }
+}
