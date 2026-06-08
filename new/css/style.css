@@ -2301,3 +2301,62 @@ a.btn:hover,
   color: #000 !important;
   -webkit-text-fill-color: #000 !important;
 }
+
+
+/* update 41 revised: hover text black + label layer fix
+   前回の色指定だけでは、疑似要素や既存hover指定の影響で文字が隠れる環境があったため、
+   ボタン内テキストを .btn-label として最前面レイヤーに置き、hover時は黒で強制表示する。
+   サイズ・配置・背景・枠線は変更しない。 */
+.global-nav .contact-link .btn-label,
+.topic-item b .btn-label,
+.recruit-cta > .btn-primary .btn-label,
+.site-footer .footer-btn .btn-label {
+  position: relative !important;
+  z-index: 6 !important;
+  display: inline-block !important;
+  color: inherit !important;
+  -webkit-text-fill-color: currentColor !important;
+  pointer-events: none !important;
+}
+
+.site-header .global-nav .contact-link:hover,
+.site-header .global-nav .contact-link:focus-visible,
+.global-nav .contact-link:hover,
+.global-nav .contact-link:focus-visible,
+.recruit-cta > .btn-primary:hover,
+.recruit-cta > .btn-primary:focus-visible,
+.site-footer .footer-btn:hover,
+.site-footer .footer-btn:focus-visible,
+.topic-item:hover b,
+.topic-item:focus-visible b {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+  text-shadow: none !important;
+}
+
+.site-header .global-nav .contact-link:hover .btn-label,
+.site-header .global-nav .contact-link:focus-visible .btn-label,
+.global-nav .contact-link:hover .btn-label,
+.global-nav .contact-link:focus-visible .btn-label,
+.recruit-cta > .btn-primary:hover .btn-label,
+.recruit-cta > .btn-primary:focus-visible .btn-label,
+.site-footer .footer-btn:hover .btn-label,
+.site-footer .footer-btn:focus-visible .btn-label,
+.topic-item:hover b .btn-label,
+.topic-item:focus-visible b .btn-label {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+  text-shadow: none !important;
+}
+
+.site-header .global-nav .contact-link:hover::after,
+.site-header .global-nav .contact-link:focus-visible::after,
+.global-nav .contact-link:hover::after,
+.global-nav .contact-link:focus-visible::after,
+.recruit-cta > .btn-primary:hover::after,
+.recruit-cta > .btn-primary:focus-visible::after,
+.site-footer .footer-btn:hover::after,
+.site-footer .footer-btn:focus-visible::after {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+}
