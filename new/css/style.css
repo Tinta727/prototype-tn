@@ -2059,3 +2059,83 @@ a.btn:hover,
   }
 }
 
+
+/* update 37: Idea 1 button corner outline fix
+   clip-pathで四隅の斜め部分の枠線が欠けて見える問題を修正。
+   borderではなく、同じ多角形の疑似要素で1pxアウトラインを描画する。
+   サイズ・配置は変更しない。 */
+.global-nav .contact-link,
+.topic-item b,
+.recruit-cta > .btn-primary,
+.site-footer .footer-btn {
+  border: 0 !important;
+  clip-path: polygon(
+    10px 0,
+    calc(100% - 10px) 0,
+    100% 10px,
+    100% calc(100% - 10px),
+    calc(100% - 10px) 100%,
+    10px 100%,
+    0 calc(100% - 10px),
+    0 10px
+  ) !important;
+}
+
+.global-nav .contact-link::before,
+.topic-item b::before,
+.recruit-cta > .btn-primary::before,
+.site-footer .footer-btn::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  left: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  z-index: 1 !important;
+  padding: 1px !important;
+  box-sizing: border-box !important;
+  pointer-events: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+  background: var(--tn-btn-white-line) !important;
+  transition: background-color .24s ease, opacity .24s ease !important;
+  clip-path: polygon(
+    10px 0,
+    calc(100% - 10px) 0,
+    100% 10px,
+    100% calc(100% - 10px),
+    calc(100% - 10px) 100%,
+    10px 100%,
+    0 calc(100% - 10px),
+    0 10px
+  ) !important;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0) border-box !important;
+  -webkit-mask-composite: xor !important;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0) border-box !important;
+  mask-composite: exclude !important;
+}
+
+.global-nav .contact-link:hover::before,
+.global-nav .contact-link:focus-visible::before,
+.topic-item:hover b::before,
+.topic-item:focus-visible b::before,
+.recruit-cta > .btn-primary:hover::before,
+.recruit-cta > .btn-primary:focus-visible::before,
+.site-footer .footer-btn:hover::before,
+.site-footer .footer-btn:focus-visible::before {
+  inset: 0 !important;
+  left: 0 !important;
+  opacity: 1 !important;
+  background: var(--yellow) !important;
+  transform: none !important;
+}
+
+.global-nav .contact-link::after,
+.recruit-cta > .btn-primary::after,
+.site-footer .footer-btn::after {
+  z-index: 2 !important;
+}
