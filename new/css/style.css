@@ -2252,3 +2252,21 @@ a.btn:hover,
 .site-footer .footer-btn::after {
   z-index: 4 !important;
 }
+
+
+/* update 39: add top whitespace to the fixed header
+   現行テクノネットサイトに近い上部余白を確保。
+   ヘッダー内のロゴ・ナビ・お問い合わせボタン全体を下げ、
+   既存のボタンサイズや横位置は変更しない。 */
+@media (min-width: 981px) {
+  .site-header {
+    height: 108px !important;
+    padding-top: 28px !important;
+    align-items: flex-start !important;
+  }
+
+  .site-header .brand,
+  .site-header .global-nav {
+    flex-shrink: 0;
+  }
+}
