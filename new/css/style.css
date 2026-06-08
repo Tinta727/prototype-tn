@@ -2270,3 +2270,34 @@ a.btn:hover,
     flex-shrink: 0;
   }
 }
+
+/* update 41: keep button text visible on hover
+   マウスオーバー時に淡い黄色ボタン上で文字が消えないよう、
+   対象6ボタンの文字色・矢印色を黒で強制統一する。
+   サイズ・配置・背景・枠線は変更しない。 */
+.site-header .global-nav .contact-link:hover,
+.site-header .global-nav .contact-link:focus-visible,
+.global-nav .contact-link:hover,
+.global-nav .contact-link:focus-visible,
+.recruit-cta > .btn-primary:hover,
+.recruit-cta > .btn-primary:focus-visible,
+.site-footer .footer-btn:hover,
+.site-footer .footer-btn:focus-visible,
+.topic-item:hover b,
+.topic-item:focus-visible b {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+  text-shadow: none !important;
+}
+
+.site-header .global-nav .contact-link:hover::after,
+.site-header .global-nav .contact-link:focus-visible::after,
+.global-nav .contact-link:hover::after,
+.global-nav .contact-link:focus-visible::after,
+.recruit-cta > .btn-primary:hover::after,
+.recruit-cta > .btn-primary:focus-visible::after,
+.site-footer .footer-btn:hover::after,
+.site-footer .footer-btn:focus-visible::after {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+}
