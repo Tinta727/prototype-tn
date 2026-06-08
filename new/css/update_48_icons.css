@@ -1,0 +1,65 @@
+/* update 48: 小見出し上部アイコン差し替え
+   - 既存の丸いCSS記号を、意味が分かる7種類のSVGアイコンに変更
+   - TOPページ上で見やすいように線を太め、サイズをやや大きめに調整
+   - 既存のカード余白・文字サイズ・矢印位置は大きく変更しない
+*/
+
+.tn-point-icon {
+  display: block;
+  width: 72px;
+  height: 72px;
+  margin: 0 0 18px;
+  position: relative;
+  z-index: 2;
+  color: var(--red-accent, #ed1c24);
+  filter: drop-shadow(0 0 10px rgba(237, 28, 36, .22));
+}
+
+.tn-point-icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* 旧 .icon 系の丸マークが残っていても表示しないための保険 */
+.outline-card > .icon {
+  display: none !important;
+}
+
+/* アイコンが入った分、カード内の上部の見え方を少し整える */
+.reason-grid .outline-card,
+.service-grid .outline-card {
+  padding-top: 30px !important;
+}
+
+.reason-grid .outline-card h3,
+.service-grid .outline-card h3 {
+  margin-top: 8px !important;
+}
+
+/* hover時は淡い黄色ではなく、既存の赤いアイコンを明るく見せる */
+.outline-card:hover .tn-point-icon,
+.outline-card:focus-visible .tn-point-icon {
+  filter:
+    drop-shadow(0 0 12px rgba(237, 28, 36, .42))
+    drop-shadow(0 0 20px rgba(255, 241, 168, .12));
+  transform: translateY(-1px);
+  transition: filter .24s ease, transform .24s ease;
+}
+
+@media (max-width: 980px) {
+  .tn-point-icon {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .tn-point-icon {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 14px;
+  }
+}
