@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="t d">
+  <title id="t">次世代メディア・放送ソリューション</title><desc id="d">再生ボタンと放送の波を示すアイコン</desc>
+  <g fill="none" stroke="#ed1c24" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="48" cy="48" r="22"/>
+    <path d="M42 36l20 12-20 12z"/>
+    <path d="M23 26c-6 6-10 14-10 22s4 16 10 22"/>
+    <path d="M73 26c6 6 10 14 10 22s-4 16-10 22"/>
+    <path d="M13 16C4 25 0 36 0 48s4 23 13 32" transform="translate(7 0)"/>
+    <path d="M83 16c9 9 13 20 13 32s-4 23-13 32" transform="translate(-7 0)"/>
+  </g>
+</svg>

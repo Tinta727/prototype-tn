@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="t d">
+  <title id="t">製品・ソフトウェア情報</title><desc id="d">ソフトウェア画面と製品パッケージを示すアイコン</desc>
+  <g fill="none" stroke="#ed1c24" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="10" y="15" width="76" height="66" rx="5"/>
+    <path d="M10 30h76"/>
+    <circle cx="21" cy="23" r="2"/><circle cx="31" cy="23" r="2"/><circle cx="41" cy="23" r="2"/>
+    <path d="M28 49l18-10 18 10-18 10-18-10z"/>
+    <path d="M28 49v18l18 10 18-10V49"/>
+    <path d="M46 59v18"/>
+    <path d="M68 46h10M68 58h10M68 70h10"/>
+  </g>
+</svg>
