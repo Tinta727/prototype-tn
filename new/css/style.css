@@ -2453,3 +2453,22 @@ a.btn:hover,
     grid-template-columns: 1fr;
   }
 }
+
+
+/* update 45: project images default dark tone / hover original tone
+   プロジェクト導入実績3点の画像を通常時は暗めにし、
+   マウスオーバー時だけ原画に戻す。
+   現行サイトTOP画像に近い暗さを想定。 */
+.case-card .case-image-frame {
+  background: #000;
+}
+
+.case-card .case-image-frame img.project-image {
+  filter: brightness(.46) contrast(.82) saturate(.88) !important;
+  transition: filter .35s ease, opacity .35s ease, transform .35s ease !important;
+}
+
+.case-card:hover .case-image-frame img.project-image,
+.case-card:focus-visible .case-image-frame img.project-image {
+  filter: brightness(1) contrast(1) saturate(1) !important;
+}
