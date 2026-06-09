@@ -7,6 +7,59 @@
   <meta name="description" content="株式会社テクノネット新サイトTOPページの静的HTML/CSS/JSモックアップです。">
   <link rel="stylesheet" href="css/style.css?v=47">
   <link rel="stylesheet" href="css/update_48_icons.css?v=48">
+
+<style>
+/* update_60: 元背景HTMLへソリューション画像（image01-03）と明るさ調整を反映 */
+#solutions .feature-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+#solutions .feature-card > img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  z-index: 0 !important;
+  opacity: 1 !important;
+  transform: scale(1.01);
+  filter: brightness(.92) contrast(1.06) saturate(1.06);
+  transition: transform .55s ease, filter .55s ease;
+  pointer-events: none;
+}
+
+#solutions .feature-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(135deg, rgba(0,0,0,.52) 0%, rgba(0,0,0,.30) 48%, rgba(120,0,0,.16) 100%),
+    radial-gradient(circle at 78% 18%, rgba(237,28,36,.16), transparent 42%);
+  pointer-events: none;
+  transition: background .55s ease;
+}
+
+#solutions .feature-card > :not(img) {
+  position: relative;
+  z-index: 2;
+}
+
+#solutions .feature-card:hover > img,
+#solutions .feature-card:focus-visible > img {
+  transform: scale(1.08);
+  filter: brightness(1) contrast(1) saturate(1);
+}
+
+#solutions .feature-card:hover::before,
+#solutions .feature-card:focus-visible::before {
+  background:
+    linear-gradient(135deg, rgba(0,0,0,.36) 0%, rgba(0,0,0,.20) 48%, rgba(150,0,0,.10) 100%),
+    radial-gradient(circle at 78% 18%, rgba(237,28,36,.12), transparent 44%);
+}
+</style>
 </head>
 <body>
   <canvas id="dataWave" aria-hidden="true"></canvas>
@@ -53,21 +106,21 @@
           <span class="card-number">01</span>
           <h3>スポーツ競技会の<br>運営を革新する<br>競技ルールの深層理解</h3>
           <p>多くのスポーツ、競技団体に関わってきた知見をもとに、ルールや運営の文脈を理解してシステムを構築します。</p>
-          <img src="assets/visual-network.svg" alt="">
+          <img src="assets/image01.png" alt="">
           <span class="card-arrow">→</span>
         </a>
         <a class="feature-card large hoverable" href="#">
           <span class="card-number">02</span>
           <h3>「開発」と「運用の」<br>完全融合</h3>
           <p>スポーツイベント・エンタメの「コア」を担う経験と技術。現場のフローに合わせて最適化し、確実に稼働させます。</p>
-          <img src="assets/visual-control.svg" alt="">
+          <img src="assets/image02.png" alt="">
           <span class="card-arrow">→</span>
         </a>
         <a class="feature-card large hoverable" href="#">
           <span class="card-number">03</span>
           <h3>放送・配信・<br>スタジアムビジョン表示の<br>戦略的パートナー</h3>
           <p>放送局クオリティのCG／テロップと、ビジョン表示システム・アプリで、スポーツ競技やイベント放送・配信を支援します。</p>
-          <img src="assets/visual-stadium.svg" alt="">
+          <img src="assets/image03.png" alt="">
           <span class="card-arrow">→</span>
         </a>
       </div>
