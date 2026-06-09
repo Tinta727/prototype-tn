@@ -195,6 +195,34 @@
 }
 </style>
 
+
+
+<style>
+/* update_78: モバイルメニュー項目の行頭をロゴ左辺に揃え、ページクリックで閉じる */
+@media (max-width: 900px) {
+  .global-nav.is-open {
+    padding-left: 44px !important;
+    padding-right: 18px !important;
+  }
+
+  .global-nav.is-open .contact-link {
+    width: calc(100vw - 88px) !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .global-nav.is-open {
+    padding-left: 44px !important;
+  }
+
+  .global-nav.is-open .contact-link {
+    width: calc(100vw - 88px) !important;
+  }
+}
+</style>
+
 </head>
 <body>
   <canvas id="dataWave" aria-hidden="true"></canvas>
@@ -421,5 +449,28 @@
   </footer>
 
   <script src="js/main.js?v=36"></script>
+
+
+<script>
+/* update_78: モバイルメニュー表示中、メニュー以外のページクリック／タップで格納 */
+(() => {
+  const closeMobileMenu = () => {
+    const nav = document.getElementById("globalNav");
+    const toggle = document.querySelector(".nav-toggle");
+    if (!nav || !toggle || !nav.classList.contains("is-open")) return;
+    nav.classList.remove("is-open");
+    toggle.setAttribute("aria-expanded", "false");
+  };
+
+  document.addEventListener("pointerdown", (event) => {
+    const nav = document.getElementById("globalNav");
+    const toggle = document.querySelector(".nav-toggle");
+    if (!nav || !toggle || !nav.classList.contains("is-open")) return;
+    if (nav.contains(event.target) || toggle.contains(event.target)) return;
+    closeMobileMenu();
+  }, { passive: true });
+})();
+</script>
+
 </body>
 </html>
