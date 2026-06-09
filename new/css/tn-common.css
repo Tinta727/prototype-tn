@@ -1,0 +1,247 @@
+/* update_80: TOPページ共通CSS化
+   - index.html / bg-pulse-b.html に散在していたインラインCSSを外部CSSへ集約
+   - 下層ページ展開時は、このCSSを共通で読み込むことでトンマナ修正を一括反映しやすくする
+   - 既存の style.css / update_48_icons.css は維持
+*/
+
+/* update_64: 背景B案の赤みを元背景に近いレベルへ抑制 */
+/* update_57: 背景B案をオリジナルテスト背景に近い明るさへ調整 */
+/* 背景比較用：明るさ調整版
+   修正点：
+   - A/Bとも背景を全体的に明るく
+   - canvasを確実に見えるレイヤーに配置
+*/
+html, body {
+  min-height: 100%;
+}
+
+body {
+  position: relative;
+  isolation: isolate;
+}
+
+#dataWave {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+}
+
+.site-noise {
+  z-index: 1 !important;
+  pointer-events: none !important;
+}
+
+.site-header,
+main,
+.site-footer {
+  position: relative;
+  z-index: 2;
+}
+
+.bg-variant-label {
+  position: fixed;
+  left: 18px;
+  bottom: 14px;
+  z-index: 50;
+  font-size: 11px;
+  letter-spacing: .18em;
+  color: rgba(255,255,255,.42);
+  pointer-events: none;
+}
+@media (max-width: 640px) {
+  .bg-variant-label { display: none; }
+}
+
+/* update_67: ソリューション画像の通常時の明るさ・コントラストを導入実績枠に近づける */
+#solutions .feature-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+#solutions .feature-card > img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  z-index: 0 !important;
+  opacity: 1 !important;
+  transform: scale(1.01);
+  filter: brightness(.92) contrast(1.06) saturate(1.06); /* update_68: 通常時はプロジェクト導入実績と同程度の暗さ */
+  transition: transform .55s ease, filter .55s ease;
+  pointer-events: none;
+}
+
+#solutions .feature-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(135deg, rgba(0,0,0,.50) 0%, rgba(0,0,0,.28) 48%, rgba(120,0,0,.14) 100%),
+    radial-gradient(circle at 78% 18%, rgba(237,28,36,.14), transparent 42%); /* update_68: 通常時はプロジェクト導入実績と同程度に暗くする */
+  pointer-events: none;
+  transition: background .55s ease;
+}
+
+#solutions .feature-card > :not(img) {
+  position: relative;
+  z-index: 2;
+}
+
+#solutions .feature-card:hover > img,
+#solutions .feature-card:focus-visible > img {
+  transform: scale(1.08);
+  filter: brightness(1) contrast(1) saturate(1);
+}
+
+#solutions .feature-card:hover::before,
+#solutions .feature-card:focus-visible::before {
+  background:
+    linear-gradient(135deg, rgba(0,0,0,.06) 0%, rgba(0,0,0,.03) 48%, rgba(150,0,0,.02) 100%),
+    radial-gradient(circle at 78% 18%, rgba(237,28,36,.03), transparent 44%); /* update_68: ホバー時は原画明度100%に近づける */
+}
+
+
+
+/* update_61: フッターリンクのホバー範囲を行全体に拡張 */
+.footer-links a {
+  display: block;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* update_63: フッター「ソリューション」配下リンクの左半分もリンク領域に含める */
+.site-footer .footer-links > div:first-child {
+  position: relative !important;
+  align-items: stretch !important;
+}
+.site-footer .footer-links > div:first-child a {
+  display: block !important;
+  position: relative !important;
+  width: auto !important;
+  max-width: none !important;
+  box-sizing: border-box !important;
+  margin-left: -9rem !important;
+  padding-left: 9rem !important;
+  cursor: pointer !important;
+}
+.site-footer .footer-links > div:first-child a:hover,
+.site-footer .footer-links > div:first-child a:focus-visible {
+  cursor: pointer !important;
+}
+
+/* update_72: 導入実績3枠＋企業情報2枠の通常時をさらに一段暗めに再調整。ホバー時は変更なし */
+#projects .case-card:not(:hover):not(:focus-visible) .project-image,
+#company .story-card:not(:hover):not(:focus-visible) .story-image {
+  filter: brightness(.78) contrast(1.03) saturate(1.02) !important;
+  opacity: 1 !important;
+}
+
+#projects .case-card:not(:hover):not(:focus-visible)::before,
+#projects .case-card:not(:hover):not(:focus-visible)::after,
+#company .story-card:not(:hover):not(:focus-visible)::before,
+#company .story-card:not(:hover):not(:focus-visible)::after,
+#projects .case-card:not(:hover):not(:focus-visible) .case-image-frame::before,
+#projects .case-card:not(:hover):not(:focus-visible) .case-image-frame::after {
+  background:
+    linear-gradient(135deg, rgba(0,0,0,.64) 0%, rgba(0,0,0,.42) 48%, rgba(120,0,0,.20) 100%),
+    radial-gradient(circle at 78% 18%, rgba(237,28,36,.10), transparent 42%) !important;
+}
+
+/* update_73: レスポンシブ最小幅でトップの下向き矢印が本文に重ならないよう下へ移動 */
+@media (max-width: 640px) {
+  .hero {
+    padding-bottom: 96px !important;
+  }
+
+  .scroll-cue {
+    bottom: 18px !important;
+  }
+}
+
+/* update_76: レスポンシブ時のハンバーガーメニュー背景を25%透過に変更 */
+@media (max-width: 900px) {
+  .site-header {
+    z-index: 1000 !important;
+  }
+
+  .global-nav.is-open {
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: 66px !important;
+    z-index: 999 !important;
+    background: rgba(3, 0, 0, .75) !important;
+    border-top: 1px solid rgba(255, 255, 255, .08) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, .16) !important;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, .35) !important;
+    padding: 28px 18px 22px !important;
+    box-sizing: border-box !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+  }
+
+  .global-nav.is-open a {
+    position: relative !important;
+    z-index: 1 !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .global-nav.is-open {
+    top: 65px !important;
+  }
+}
+
+/* update_77: レスポンシブ時のハンバーガーメニュー項目の行間を約2/3に圧縮 */
+@media (max-width: 900px) {
+  .global-nav.is-open {
+    gap: 18px !important;
+    row-gap: 18px !important;
+    padding-top: 22px !important;
+    padding-bottom: 18px !important;
+  }
+
+  .global-nav.is-open a {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+    line-height: 1.25 !important;
+  }
+
+  .global-nav.is-open .contact-link {
+    margin-top: 8px !important;
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+  }
+}
+
+/* update_78: モバイルメニュー項目の行頭をロゴ左辺に揃え、ページクリックで閉じる */
+@media (max-width: 900px) {
+  .global-nav.is-open {
+    padding-left: 44px !important;
+    padding-right: 18px !important;
+  }
+
+  .global-nav.is-open .contact-link {
+    width: calc(100vw - 88px) !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .global-nav.is-open {
+    padding-left: 44px !important;
+  }
+
+  .global-nav.is-open .contact-link {
+    width: calc(100vw - 88px) !important;
+  }
+}
