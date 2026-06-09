@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="css/update_48_icons.css?v=48">
 
 <style>
-/* update_56: 背景B案 線・パルスを倍速化し、上下変化幅を拡大 */
+/* update_57: 背景B案をオリジナルテスト背景に近い明るさへ調整 */
 /* 背景比較用：明るさ調整版
    修正点：
    - A/Bとも背景を全体的に明るく
@@ -64,7 +64,7 @@ main,
 <body>
   <canvas id="dataWave" aria-hidden="true"></canvas>
   <div class="site-noise" aria-hidden="true"></div>
-  <div class="bg-variant-label" aria-hidden="true">背景案B：パルス×スポーツ / update_56</div>
+  <div class="bg-variant-label" aria-hidden="true">背景案B：パルス×スポーツ / update_57</div>
 
   <header class="site-header">
     <a href="#" class="brand hoverable" aria-label="TECHNONET HOME">
@@ -325,7 +325,7 @@ main,
       y: rand(30, height - 30),
       speed: rand(0.12, 0.38) * (MODE === "sports" ? 0.9 : 1),
       size: rand(13, 28),
-      alpha: rand(0.16, 0.34),
+      alpha: rand(0.22, 0.42), // update_57: 浮遊オブジェクトを明るく
       phase: rand(0, Math.PI * 2),
       glyph: glyphs[i % glyphs.length],
       kind: i % 4
@@ -348,11 +348,11 @@ main,
     }
 
     ctx.strokeStyle = red + alpha + ")";
-    ctx.lineWidth = 1.45;
+    ctx.lineWidth = 1.65; // update_57: パルス線を少し太く
     ctx.stroke();
 
     ctx.strokeStyle = red + (alpha * 1.55) + ")";
-    ctx.lineWidth = 1.15;
+    ctx.lineWidth = 1.28; // update_57: 直線パルスを少し太く
     for (let x = -80; x <= width + 80; x += segment * 2) {
       const sx = x + (time * speed * 0.9 + offset) % (segment * 2);
       const y = baseY + Math.sin((sx + offset) * 0.006 + angular) * amp;
@@ -368,7 +368,7 @@ main,
   function drawParticle(p) {
     const x = p.x;
     const y = p.y + Math.sin(time * 0.015 + p.phase) * 12;
-    const a = Math.max(0.10, p.alpha * (0.82 + Math.sin(time * 0.012 + p.phase) * 0.18));
+    const a = Math.max(0.14, p.alpha * (0.88 + Math.sin(time * 0.012 + p.phase) * 0.12)); // update_57: 最低透明度を上げる
 
     ctx.save();
     ctx.translate(x, y);
@@ -431,38 +431,38 @@ main,
 
     // 全体を少し明るくする赤いベースグロー
     const grad = ctx.createRadialGradient(width * 0.5, height * 0.28, 0, width * 0.5, height * 0.35, Math.max(width, height) * 0.9);
-    grad.addColorStop(0, "rgba(237,28,36,0.085)");
-    grad.addColorStop(0.50, "rgba(120,0,0,0.038)");
+    grad.addColorStop(0, "rgba(237,28,36,0.145)"); // update_57: 赤いグローを強化
+    grad.addColorStop(0.50, "rgba(150,0,0,0.070)"); // update_57: 中間域も明るく
     grad.addColorStop(1, "rgba(0,0,0,0)");
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, width, height);
 
     // 薄い赤いヴェールを重ねて、真っ黒感を抑える
-    ctx.fillStyle = MODE === "data" ? "rgba(110, 0, 0, 0.08)" : "rgba(95, 0, 0, 0.07)";
+    ctx.fillStyle = MODE === "data" ? "rgba(130, 0, 0, 0.10)" : "rgba(135, 0, 0, 0.125)"; // update_57: B案の赤いヴェールを強化
     ctx.fillRect(0, 0, width, height);
 
     const lineCount = MODE === "data" ? 8 : 6;
     for (let i = 0; i < lineCount; i++) {
       const y = (height / (lineCount + 1)) * (i + 1);
       drawPulseLine(
-        y + Math.sin(i * 2.1) * 28, // update_56: 基準位置の上下変化幅を拡大
-        MODE === "data" ? 22 + i * 1.8 : 44 + i * 4.0, // update_56: B案の上下変化幅を拡大
-        MODE === "data" ? 0.28 + i * 0.02 : 0.44 + i * 0.03, // update_56: B案の線・パルス速度を2倍
-        MODE === "data" ? 0.34 : 0.28,
+        y + Math.sin(i * 2.1) * 28, // update_57: 基準位置の上下変化幅を拡大
+        MODE === "data" ? 22 + i * 1.8 : 44 + i * 4.0, // update_57: B案の上下変化幅を拡大
+        MODE === "data" ? 0.28 + i * 0.02 : 0.44 + i * 0.03, // update_57: B案の線・パルス速度を2倍
+        MODE === "data" ? 0.34 : 0.42, // update_57: B案パルス線を明るく
         i * 137,
         i * 0.7
       );
     }
 
     // 直線パルスをより明るく
-    ctx.strokeStyle = red + (MODE === "data" ? "0.24)" : "0.19)");
-    ctx.lineWidth = 1.15;
+    ctx.strokeStyle = red + (MODE === "data" ? "0.24)" : "0.31)"); // update_57: B案の直線パルスを明るく
+    ctx.lineWidth = 1.28; // update_57: 直線パルスを少し太く
     for (let i = 0; i < 5; i++) {
-      const y = (height * (0.18 + i * 0.16)) + Math.sin(time * 0.012 + i) * 18; // update_56: 直線パルスの上下変化幅を拡大、速度も2倍
+      const y = (height * (0.18 + i * 0.16)) + Math.sin(time * 0.012 + i) * 18; // update_57: 直線パルスの上下変化幅を拡大、速度も2倍
       ctx.beginPath();
       ctx.moveTo(-60, y);
       for (let x = -60; x < width + 80; x += 96) {
-        const notch = ((x + time * 0.36 + i * 90) % 384 < 96) ? 16 : 0; // update_56: ノッチ移動速度を2倍、段差も拡大
+        const notch = ((x + time * 0.36 + i * 90) % 384 < 96) ? 16 : 0; // update_57: ノッチ移動速度を2倍、段差も拡大
         ctx.lineTo(x + 58, y);
         ctx.lineTo(x + 70, y - notch);
         ctx.lineTo(x + 92, y - notch);
@@ -471,7 +471,7 @@ main,
     }
 
     for (const p of particles) {
-      p.x += p.speed * 4; // update_56: 浮遊オブジェクトの横移動を4倍速（初期比）
+      p.x += p.speed * 4; // update_57: 浮遊オブジェクトの横移動を4倍速（初期比）
       if (p.x > width + 60) {
         p.x = rand(-360, -60);
         p.y = rand(30, height - 30);
