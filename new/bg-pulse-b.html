@@ -220,6 +220,34 @@ main,
 }
 </style>
 
+
+
+<style>
+/* update_77: レスポンシブ時のハンバーガーメニュー項目の行間を約2/3に圧縮 */
+@media (max-width: 900px) {
+  .global-nav.is-open {
+    gap: 18px !important;
+    row-gap: 18px !important;
+    padding-top: 22px !important;
+    padding-bottom: 18px !important;
+  }
+
+  .global-nav.is-open a {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+    line-height: 1.25 !important;
+  }
+
+  .global-nav.is-open .contact-link {
+    margin-top: 8px !important;
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+  }
+}
+</style>
+
 </head>
 <body>
   <canvas id="dataWave" aria-hidden="true"></canvas>
