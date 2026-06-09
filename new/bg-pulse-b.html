@@ -59,8 +59,7 @@ main,
   .bg-variant-label { display: none; }
 }
 
-
-/* update_58: 「ソリューション」3項目に添付イメージ画像を配置 */
+/* update_59: 「ソリューション」3項目の画像明度を導入実績・企業情報枠に近づける */
 #solutions .feature-card {
   position: relative;
   overflow: hidden;
@@ -74,10 +73,10 @@ main,
   height: 100% !important;
   object-fit: cover !important;
   z-index: 0 !important;
-  opacity: 0.72 !important;
+  opacity: 1 !important;
   transform: scale(1.01);
-  filter: brightness(0.72) contrast(1.08) saturate(1.08);
-  transition: transform .55s ease, opacity .55s ease, filter .55s ease;
+  filter: brightness(.92) contrast(1.06) saturate(1.06);
+  transition: transform .55s ease, filter .55s ease;
   pointer-events: none;
 }
 
@@ -87,8 +86,8 @@ main,
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(135deg, rgba(0,0,0,.82) 0%, rgba(0,0,0,.55) 48%, rgba(120,0,0,.30) 100%),
-    radial-gradient(circle at 78% 18%, rgba(237,28,36,.30), transparent 42%);
+    linear-gradient(135deg, rgba(0,0,0,.52) 0%, rgba(0,0,0,.30) 48%, rgba(120,0,0,.16) 100%),
+    radial-gradient(circle at 78% 18%, rgba(237,28,36,.16), transparent 42%);
   pointer-events: none;
   transition: background .55s ease;
 }
@@ -101,15 +100,14 @@ main,
 #solutions .feature-card:hover > img,
 #solutions .feature-card:focus-visible > img {
   transform: scale(1.08);
-  opacity: 0.88 !important;
-  filter: brightness(0.86) contrast(1.10) saturate(1.15);
+  filter: brightness(1) contrast(1) saturate(1);
 }
 
 #solutions .feature-card:hover::before,
 #solutions .feature-card:focus-visible::before {
   background:
-    linear-gradient(135deg, rgba(0,0,0,.74) 0%, rgba(0,0,0,.48) 48%, rgba(150,0,0,.25) 100%),
-    radial-gradient(circle at 78% 18%, rgba(237,28,36,.38), transparent 44%);
+    linear-gradient(135deg, rgba(0,0,0,.36) 0%, rgba(0,0,0,.20) 48%, rgba(150,0,0,.10) 100%),
+    radial-gradient(circle at 78% 18%, rgba(237,28,36,.12), transparent 44%);
 }
 
 </style>
