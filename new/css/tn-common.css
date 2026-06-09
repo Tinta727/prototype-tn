@@ -245,3 +245,47 @@ main,
     width: calc(100vw - 88px) !important;
   }
 }
+
+/* update_82: PC/レスポンシブ共通でヘッダーを画面上部に固定 */
+:root {
+  --tn-fixed-header-height: 72px;
+}
+
+body {
+  padding-top: var(--tn-fixed-header-height) !important;
+}
+
+.site-header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  min-height: var(--tn-fixed-header-height) !important;
+  z-index: 1200 !important;
+  background: rgba(3, 0, 0, .90) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, .12) !important;
+  box-sizing: border-box !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+}
+
+@media (max-width: 900px) {
+  :root {
+    --tn-fixed-header-height: 65px;
+  }
+
+  .site-header {
+    min-height: var(--tn-fixed-header-height) !important;
+  }
+
+  .global-nav.is-open {
+    top: var(--tn-fixed-header-height) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .global-nav.is-open {
+    top: var(--tn-fixed-header-height) !important;
+  }
+}
