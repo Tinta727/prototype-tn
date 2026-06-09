@@ -76,7 +76,7 @@ main,
   z-index: 0 !important;
   opacity: 1 !important;
   transform: scale(1.01);
-  filter: brightness(1.18) contrast(1.16) saturate(1.14); /* update_67: 通常時のみ、導入実績枠に近い明るさへ調整 */
+  filter: brightness(.92) contrast(1.06) saturate(1.06); /* update_68: 通常時はプロジェクト導入実績と同程度の暗さ */
   transition: transform .55s ease, filter .55s ease;
   pointer-events: none;
 }
@@ -87,8 +87,8 @@ main,
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(135deg, rgba(0,0,0,.18) 0%, rgba(0,0,0,.08) 48%, rgba(120,0,0,.04) 100%),
-    radial-gradient(circle at 78% 18%, rgba(237,28,36,.06), transparent 42%); /* update_67: 通常時の黒オーバーレイを大幅に弱める */
+    linear-gradient(135deg, rgba(0,0,0,.50) 0%, rgba(0,0,0,.28) 48%, rgba(120,0,0,.14) 100%),
+    radial-gradient(circle at 78% 18%, rgba(237,28,36,.14), transparent 42%); /* update_68: 通常時はプロジェクト導入実績と同程度に暗くする */
   pointer-events: none;
   transition: background .55s ease;
 }
@@ -107,8 +107,8 @@ main,
 #solutions .feature-card:hover::before,
 #solutions .feature-card:focus-visible::before {
   background:
-    linear-gradient(135deg, rgba(0,0,0,.36) 0%, rgba(0,0,0,.20) 48%, rgba(150,0,0,.10) 100%),
-    radial-gradient(circle at 78% 18%, rgba(237,28,36,.12), transparent 44%);
+    linear-gradient(135deg, rgba(0,0,0,.06) 0%, rgba(0,0,0,.03) 48%, rgba(150,0,0,.02) 100%),
+    radial-gradient(circle at 78% 18%, rgba(237,28,36,.03), transparent 44%); /* update_68: ホバー時は原画明度100%に近づける */
 }
 
 
