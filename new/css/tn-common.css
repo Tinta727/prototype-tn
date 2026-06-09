@@ -263,7 +263,7 @@ body {
   width: 100% !important;
   min-height: var(--tn-fixed-header-height) !important;
   z-index: 1200 !important;
-  background: rgba(3, 0, 0, .90) !important;
+  background: rgba(3, 0, 0, .25) !important; /* update_84: 固定ヘッダー背景を25%不透明へ変更（透過感を強化） */
   border-bottom: 1px solid rgba(255, 255, 255, .12) !important;
   box-sizing: border-box !important;
   backdrop-filter: blur(8px) !important;
@@ -288,4 +288,21 @@ body {
   .global-nav.is-open {
     top: var(--tn-fixed-header-height) !important;
   }
+}
+
+
+/* update_83: 固定ヘッダー背景を25%透過（透過率25%、不透明度75%） */
+
+
+/* update_84: 固定ヘッダー背景の透過を確実に反映。ロゴ・メニューボタン自体は不透明のまま */
+.site-header {
+  background: rgba(3, 0, 0, .25) !important;
+  background-color: rgba(3, 0, 0, .25) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+.site-header::before,
+.site-header::after {
+  background: transparent !important;
+  opacity: 0 !important;
 }
