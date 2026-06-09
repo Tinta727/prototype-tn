@@ -167,6 +167,21 @@ main,
 }
 </style>
 
+
+
+<style>
+/* update_73: レスポンシブ最小幅でトップの下向き矢印が本文に重ならないよう下へ移動 */
+@media (max-width: 640px) {
+  .hero {
+    padding-bottom: 96px !important;
+  }
+
+  .scroll-cue {
+    bottom: 18px !important;
+  }
+}
+</style>
+
 </head>
 <body>
   <canvas id="dataWave" aria-hidden="true"></canvas>
