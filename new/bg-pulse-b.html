@@ -122,16 +122,26 @@ main,
 </style>
 
 
+
 <style>
-/* update_62: フッターリンクのホバー／クリック範囲を行全体へ拡張 */
-.footer-links a {
+/* update_63: フッター「ソリューション」配下リンクの左半分もリンク領域に含める */
+.site-footer .footer-links > div:first-child {
+  position: relative !important;
+  align-items: stretch !important;
+}
+.site-footer .footer-links > div:first-child a {
   display: block !important;
-  width: 100% !important;
+  position: relative !important;
+  width: auto !important;
+  max-width: none !important;
   box-sizing: border-box !important;
+  margin-left: -9rem !important;
+  padding-left: 9rem !important;
   cursor: pointer !important;
 }
-.footer-links div {
-  min-width: 0;
+.site-footer .footer-links > div:first-child a:hover,
+.site-footer .footer-links > div:first-child a:focus-visible {
+  cursor: pointer !important;
 }
 </style>
 </head>
