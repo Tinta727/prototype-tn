@@ -306,3 +306,16 @@ body {
   background: transparent !important;
   opacity: 0 !important;
 }
+
+
+/* update_85: 固定ヘッダー背景を「透過度25%＝不透過75%」に修正 */
+.site-header {
+  background: rgba(3, 0, 0, .75) !important;
+  background-color: rgba(3, 0, 0, .75) !important;
+}
+
+.site-header::before,
+.site-header::after {
+  opacity: 0 !important;
+  background: transparent !important;
+}
