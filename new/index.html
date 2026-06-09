@@ -92,6 +92,28 @@
   cursor: pointer !important;
 }
 </style>
+
+
+<style>
+/* update_70: 導入実績3枠＋企業情報2枠の通常時だけをソリューション枠と同程度の明るさに調整 */
+#projects .case-card:not(:hover):not(:focus-visible) .project-image,
+#company .story-card:not(:hover):not(:focus-visible) .story-image {
+  filter: brightness(.92) contrast(1.06) saturate(1.06) !important;
+  opacity: 1 !important;
+}
+
+#projects .case-card:not(:hover):not(:focus-visible)::before,
+#projects .case-card:not(:hover):not(:focus-visible)::after,
+#company .story-card:not(:hover):not(:focus-visible)::before,
+#company .story-card:not(:hover):not(:focus-visible)::after,
+#projects .case-card:not(:hover):not(:focus-visible) .case-image-frame::before,
+#projects .case-card:not(:hover):not(:focus-visible) .case-image-frame::after {
+  background:
+    linear-gradient(135deg, rgba(0,0,0,.50) 0%, rgba(0,0,0,.28) 48%, rgba(120,0,0,.14) 100%),
+    radial-gradient(circle at 78% 18%, rgba(237,28,36,.14), transparent 42%) !important;
+}
+</style>
+
 </head>
 <body>
   <canvas id="dataWave" aria-hidden="true"></canvas>
