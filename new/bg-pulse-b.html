@@ -60,7 +60,7 @@ main,
   .bg-variant-label { display: none; }
 }
 
-/* update_66: ソリューション画像の明るさ・コントラストを導入実績枠に近づける */
+/* update_67: ソリューション画像の通常時の明るさ・コントラストを導入実績枠に近づける */
 #solutions .feature-card {
   position: relative;
   overflow: hidden;
@@ -76,7 +76,7 @@ main,
   z-index: 0 !important;
   opacity: 1 !important;
   transform: scale(1.01);
-  filter: brightness(1.08) contrast(1.12) saturate(1.12);
+  filter: brightness(1.18) contrast(1.16) saturate(1.14); /* update_67: 通常時のみ、導入実績枠に近い明るさへ調整 */
   transition: transform .55s ease, filter .55s ease;
   pointer-events: none;
 }
@@ -87,8 +87,8 @@ main,
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(135deg, rgba(0,0,0,.32) 0%, rgba(0,0,0,.14) 48%, rgba(120,0,0,.08) 100%),
-    radial-gradient(circle at 78% 18%, rgba(237,28,36,.08), transparent 42%);
+    linear-gradient(135deg, rgba(0,0,0,.18) 0%, rgba(0,0,0,.08) 48%, rgba(120,0,0,.04) 100%),
+    radial-gradient(circle at 78% 18%, rgba(237,28,36,.06), transparent 42%); /* update_67: 通常時の黒オーバーレイを大幅に弱める */
   pointer-events: none;
   transition: background .55s ease;
 }
@@ -101,14 +101,14 @@ main,
 #solutions .feature-card:hover > img,
 #solutions .feature-card:focus-visible > img {
   transform: scale(1.08);
-  filter: brightness(1.15) contrast(1.10) saturate(1.10);
+  filter: brightness(1) contrast(1) saturate(1);
 }
 
 #solutions .feature-card:hover::before,
 #solutions .feature-card:focus-visible::before {
   background:
-    linear-gradient(135deg, rgba(0,0,0,.20) 0%, rgba(0,0,0,.08) 48%, rgba(150,0,0,.04) 100%),
-    radial-gradient(circle at 78% 18%, rgba(237,28,36,.05), transparent 44%);
+    linear-gradient(135deg, rgba(0,0,0,.36) 0%, rgba(0,0,0,.20) 48%, rgba(150,0,0,.10) 100%),
+    radial-gradient(circle at 78% 18%, rgba(237,28,36,.12), transparent 44%);
 }
 
 
