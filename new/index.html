@@ -95,10 +95,10 @@
 
 
 <style>
-/* update_70: 導入実績3枠＋企業情報2枠の通常時だけをソリューション枠と同程度の明るさに調整 */
+/* update_71: 導入実績3枠＋企業情報2枠の通常時をupdate_70より少し暗めに再調整。ホバー時は変更なし */
 #projects .case-card:not(:hover):not(:focus-visible) .project-image,
 #company .story-card:not(:hover):not(:focus-visible) .story-image {
-  filter: brightness(.92) contrast(1.06) saturate(1.06) !important;
+  filter: brightness(.86) contrast(1.04) saturate(1.04) !important;
   opacity: 1 !important;
 }
 
@@ -109,8 +109,8 @@
 #projects .case-card:not(:hover):not(:focus-visible) .case-image-frame::before,
 #projects .case-card:not(:hover):not(:focus-visible) .case-image-frame::after {
   background:
-    linear-gradient(135deg, rgba(0,0,0,.50) 0%, rgba(0,0,0,.28) 48%, rgba(120,0,0,.14) 100%),
-    radial-gradient(circle at 78% 18%, rgba(237,28,36,.14), transparent 42%) !important;
+    linear-gradient(135deg, rgba(0,0,0,.56) 0%, rgba(0,0,0,.34) 48%, rgba(120,0,0,.16) 100%),
+    radial-gradient(circle at 78% 18%, rgba(237,28,36,.12), transparent 42%) !important;
 }
 </style>
 
