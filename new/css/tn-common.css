@@ -319,3 +319,29 @@ body {
   opacity: 0 !important;
   background: transparent !important;
 }
+
+
+/* update_89: ヘッダー／フッター背景の透過調整
+   - 背景B案の模様が、ヘッダー／フッター背面にも見えるようにする
+   - 文字・ロゴ・ボタン自体の不透明度は変更しない
+   - 背景色のみを不透明度45%へ調整
+*/
+.site-header {
+  background: rgba(3, 0, 0, .45) !important;
+  background-color: rgba(3, 0, 0, .45) !important;
+  backdrop-filter: blur(6px) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
+}
+
+.site-header::before,
+.site-header::after {
+  opacity: 0 !important;
+  background: transparent !important;
+}
+
+.site-footer {
+  background: rgba(3, 0, 0, .45) !important;
+  background-color: rgba(3, 0, 0, .45) !important;
+  backdrop-filter: blur(6px) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
+}
