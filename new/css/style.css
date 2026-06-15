@@ -2539,3 +2539,20 @@ a.btn:hover,
   border-color: var(--yellow) !important;
 }
 
+
+
+/* update 88: TOPページ最上部右「お問い合わせ」ボタンの通常時背景を、他CTAと同じ赤グラデーションに統一
+   - 対象はヘッダー内の .global-nav .contact-link の通常時のみ
+   - サイズ・配置・枠線・hover挙動は変更しない
+*/
+.site-header .global-nav .contact-link,
+.global-nav .contact-link {
+  background:
+    linear-gradient(180deg, var(--tn-btn-red-top) 0%, var(--tn-btn-red-mid) 48%, var(--tn-btn-red-bottom) 100%) !important;
+  background-color: var(--tn-btn-red-mid) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.36),
+    inset 0 -16px 28px rgba(0,0,0,.18),
+    inset 0 0 18px var(--tn-btn-inner-glow),
+    0 0 18px var(--tn-btn-red-glow) !important;
+}
