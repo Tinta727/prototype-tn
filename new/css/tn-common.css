@@ -319,18 +319,3 @@ body {
   opacity: 0 !important;
   background: transparent !important;
 }
-
-
-/* update_86: 固定ヘッダー背景をさらに濃くし、背面文字がかろうじて見える程度へ調整 */
-.site-header {
-  background: rgba(3, 0, 0, .92) !important;
-  background-color: rgba(3, 0, 0, .92) !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-}
-
-.site-header::before,
-.site-header::after {
-  opacity: 0 !important;
-  display: none !important;
-}
