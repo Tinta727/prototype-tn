@@ -2540,19 +2540,29 @@ a.btn:hover,
 }
 
 
+/* update 92: トピックス各行のhover枠線を4辺すべて黄色に統一
+   対象:
+   - TOPICS 行
+   - NEWS 行
+   - INFO 行
 
-/* update 88: TOPページ最上部右「お問い合わせ」ボタンの通常時背景を、他CTAと同じ赤グラデーションに統一
-   - 対象はヘッダー内の .global-nav .contact-link の通常時のみ
-   - サイズ・配置・枠線・hover挙動は変更しない
+   方針:
+   - 既存の行高・余白・ボタン・矢印・背景挙動は変更しない
+   - hover / focus-visible 時に、対象行の4辺へ他カードと同じ黄色線を表示する
+   - border幅は増やさず、outline/box-shadowで内側に描画してレイアウト崩れを防ぐ
 */
-.site-header .global-nav .contact-link,
-.global-nav .contact-link {
-  background:
-    linear-gradient(180deg, var(--tn-btn-red-top) 0%, var(--tn-btn-red-mid) 48%, var(--tn-btn-red-bottom) 100%) !important;
-  background-color: var(--tn-btn-red-mid) !important;
+.topics-list .topic-item {
+  position: relative !important;
+  z-index: 0;
+}
+
+.topics-list .topic-item:hover,
+.topics-list .topic-item:focus-visible {
+  border-color: var(--yellow) !important;
+  outline: 1px solid var(--yellow) !important;
+  outline-offset: -1px !important;
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.36),
-    inset 0 -16px 28px rgba(0,0,0,.18),
-    inset 0 0 18px var(--tn-btn-inner-glow),
-    0 0 18px var(--tn-btn-red-glow) !important;
+    inset 0 0 0 1px var(--yellow),
+    0 0 28px rgba(255, 241, 168, .18) !important;
+  z-index: 2;
 }
