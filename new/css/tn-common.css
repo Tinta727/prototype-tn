@@ -346,38 +346,21 @@ body {
   -webkit-backdrop-filter: blur(6px) !important;
 }
 
-
-/* update_90: ヘッダー／フッター背景をさらに透過し、背景B案の模様を確実に見せる
-   - 文字・ロゴ・ボタンの不透明度は変更しない
-   - 背面の文字・画像は blur を維持
-   - 既存の update_85 / update_89 より後に読み込まれる最終上書き指定
+/* update_91: ヘッダーのみ透過を再強化
+   - フッターは update_90 の状態を維持
+   - ヘッダー背面の背景模様が視認できるよう、ヘッダー背景の黒をさらに薄くする
+   - ヘッダー背面の文字・画像へのボカシは維持
+   - ロゴ・ナビ文字・お問い合わせボタン自体の不透明度は変更しない
 */
 .site-header {
-  background: rgba(3, 0, 0, .16) !important;
-  background-color: rgba(3, 0, 0, .16) !important;
-  background-image: none !important;
-  backdrop-filter: blur(8px) !important;
-  -webkit-backdrop-filter: blur(8px) !important;
+  background: rgba(3, 0, 0, .18) !important;
+  background-color: rgba(3, 0, 0, .18) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
 }
 
 .site-header::before,
 .site-header::after {
   opacity: 0 !important;
   background: transparent !important;
-  background-image: none !important;
-}
-
-.site-footer {
-  background: rgba(3, 0, 0, .16) !important;
-  background-color: rgba(3, 0, 0, .16) !important;
-  background-image: none !important;
-  backdrop-filter: blur(8px) !important;
-  -webkit-backdrop-filter: blur(8px) !important;
-}
-
-.site-footer::before,
-.site-footer::after {
-  opacity: 0 !important;
-  background: transparent !important;
-  background-image: none !important;
 }
