@@ -2514,3 +2514,28 @@ a.btn:hover,
     min-height: 220px !important;
   }
 }
+
+/* update 87: TOPページ各カード枠のhover色を黄色に統一
+   対象:
+   - ソリューション 3枠
+   - プロジェクト導入実績 3枠
+   - 企業情報＆テクノネットの物語 2枠
+   - トピックス各行
+
+   方針:
+   - 枠の太さ・挙動・画像hover効果は変更しない
+   - hover / focus-visible 時の枠色だけを、企業情報枠と同系の黄色に統一
+*/
+.feature-card:hover,
+.feature-card:focus-visible,
+.outline-card:hover,
+.outline-card:focus-visible,
+.case-card:hover,
+.case-card:focus-visible,
+.story-card:hover,
+.story-card:focus-visible,
+.topic-item:hover,
+.topic-item:focus-visible {
+  border-color: var(--yellow) !important;
+}
+
