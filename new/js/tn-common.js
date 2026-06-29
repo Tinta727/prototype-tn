@@ -1,38 +1,65 @@
-/* update_100: 共通JS。旧 #company URL転送、モバイルメニュー、ページ遷移ディゾルブ制御 */
+/* update_102: 共通JS。旧 #company URL転送、モバイルメニュー、ページ遷移ディゾルブ制御（残像防止オーバーレイ版） */
 (() => {
   const TRANSITION_MS = 250;
+  const root = document.documentElement;
 
   const installPageTransitionStyle = () => {
     if (document.getElementById("tn-page-transition-style")) return;
     const style = document.createElement("style");
     style.id = "tn-page-transition-style";
     style.textContent = `
-      body {
+      html {
+        background: #030303;
+      }
+      #tn-page-transition-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 2147483647;
+        pointer-events: none;
+        background: #030303;
+        opacity: 1;
+        visibility: visible;
+        transition: opacity ${TRANSITION_MS}ms ease, visibility 0s linear ${TRANSITION_MS}ms;
+      }
+      html.tn-page-ready #tn-page-transition-overlay {
         opacity: 0;
+        visibility: hidden;
+      }
+      html.tn-page-exit #tn-page-transition-overlay {
+        opacity: 1;
+        visibility: visible;
         transition: opacity ${TRANSITION_MS}ms ease;
       }
-      body.tn-page-ready {
-        opacity: 1;
-      }
-      body.tn-page-exit {
-        opacity: 0;
-      }
       @media (prefers-reduced-motion: reduce) {
-        body {
-          opacity: 1 !important;
-          transition: none !important;
+        #tn-page-transition-overlay {
+          display: none !important;
         }
       }
     `;
     document.head.appendChild(style);
   };
 
+  const ensureOverlay = () => {
+    let overlay = document.getElementById("tn-page-transition-overlay");
+    if (overlay) return overlay;
+    overlay = document.createElement("div");
+    overlay.id = "tn-page-transition-overlay";
+    overlay.setAttribute("aria-hidden", "true");
+    document.documentElement.appendChild(overlay);
+    return overlay;
+  };
+
   installPageTransitionStyle();
 
   const showPage = () => {
+    ensureOverlay();
     requestAnimationFrame(() => {
-      document.body.classList.remove("tn-page-exit");
-      document.body.classList.add("tn-page-ready");
+      root.classList.remove("tn-page-exit");
+      root.classList.add("tn-page-ready");
+      if (document.body) {
+        document.body.classList.remove("tn-page-exit");
+        document.body.classList.add("tn-page-ready");
+      }
     });
   };
 
@@ -42,7 +69,11 @@
     showPage();
   }
 
-  window.addEventListener("pageshow", showPage);
+  window.addEventListener("pageshow", () => {
+    root.classList.remove("tn-page-exit");
+    if (document.body) document.body.classList.remove("tn-page-exit");
+    showPage();
+  });
 
   const closeMobileMenu = () => {
     const nav = document.getElementById("globalNav");
@@ -106,9 +137,14 @@
 
     event.preventDefault();
     closeMobileMenu();
+    ensureOverlay();
 
-    document.body.classList.remove("tn-page-ready");
-    document.body.classList.add("tn-page-exit");
+    root.classList.remove("tn-page-ready");
+    root.classList.add("tn-page-exit");
+    if (document.body) {
+      document.body.classList.remove("tn-page-ready");
+      document.body.classList.add("tn-page-exit");
+    }
 
     window.setTimeout(() => {
       window.location.href = url.href;
