@@ -10,64 +10,11 @@
   <link rel="stylesheet" href="css/tn-common.css?v=82">
 
   <style id="tn-page-transition-style">
-    /* update_105: 白パカ対策。新ページを下に常時表示し、旧ページだけを0.5秒でフェードアウトさせるオーバーラップ方式 */
+    /* update_106: 白パカ対策。ブラウザ標準View Transitionは使用せず、黒背景固定＋iframe重ね表示で0.5秒オーバーラップさせる */
     html,
     body {
-      background-color: #030303 !important;
+      background: #030303 !important;
       color-scheme: dark;
-    }
-
-    @view-transition {
-      navigation: auto;
-    }
-
-    ::view-transition {
-      background-color: #030303 !important;
-    }
-
-    ::view-transition-group(root),
-    ::view-transition-image-pair(root) {
-      animation-duration: 500ms;
-      animation-timing-function: ease-in-out;
-      isolation: isolate;
-      background-color: #030303 !important;
-    }
-
-    ::view-transition-old(root),
-    ::view-transition-new(root) {
-      animation-duration: 500ms;
-      animation-timing-function: ease-in-out;
-      animation-fill-mode: both;
-      mix-blend-mode: normal !important;
-      backface-visibility: hidden;
-      background-color: #030303 !important;
-    }
-
-    /* 新ページは最初から下に表示。白い中間画面を作らない */
-    ::view-transition-new(root) {
-      animation: none;
-      opacity: 1;
-      z-index: 1;
-    }
-
-    /* 旧ページだけを上から0.5秒で抜く */
-    ::view-transition-old(root) {
-      animation-name: tn-page-overlap-old-only;
-      z-index: 2;
-    }
-
-    @keyframes tn-page-overlap-old-only {
-      0% { opacity: 1; }
-      100% { opacity: 0; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      ::view-transition-group(root),
-      ::view-transition-image-pair(root),
-      ::view-transition-old(root),
-      ::view-transition-new(root) {
-        animation-duration: 1ms !important;
-      }
     }
   </style>
 </head>
