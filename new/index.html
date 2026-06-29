@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="css/tn-common.css?v=82">
 
   <style id="tn-page-transition-style">
-    /* update_109: 白パカ・文字点滅・横ズレ対策を維持し、ページ表示時／遷移時の縦方向スクロール暴れを抑制 */
+    /* update_110: update_109のスクロール安定化を維持し、TOPページ表示時の文字0.25秒フェードインを追加 */
     html,
     body {
       background: #030303 !important;
@@ -24,9 +24,26 @@
       transform: none !important;
       transition: none !important;
     }
+
+
+    body.tn-top-entry-prep .site-header,
+    body.tn-top-entry-prep main,
+    body.tn-top-entry-prep .site-footer {
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    body.tn-top-entry-prep.tn-top-entry-show .site-header,
+    body.tn-top-entry-prep.tn-top-entry-show main,
+    body.tn-top-entry-prep.tn-top-entry-show .site-footer,
+    body.tn-top-entry-done .site-header,
+    body.tn-top-entry-done main,
+    body.tn-top-entry-done .site-footer {
+      opacity: 1;
+    }
   </style>
 </head>
-<body>
+<body class="tn-top-entry-prep">
   <canvas id="dataWave" aria-hidden="true"></canvas>
   <div class="site-noise" aria-hidden="true"></div>
 
@@ -250,6 +267,6 @@
   </footer>
 
   <script src="js/main.js?v=36"></script>
-  <script src="js/tn-common.js?v=107"></script>
+  <script src="js/tn-common.js?v=110"></script>
 </body>
 </html>
