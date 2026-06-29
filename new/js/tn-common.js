@@ -1,4 +1,4 @@
-/* update_104: 共通JS。旧 #company URL転送、モバイルメニュー、ページ遷移はブラウザ標準のクロスドキュメントView Transitionで0.5秒オーバーラップ表示 */
+/* update_105: 共通JS。旧 #company URL転送、モバイルメニュー、ページ遷移はブラウザ標準のクロスドキュメントView Transitionで0.5秒オーバーラップ表示。白パカ対策は各HTMLのインラインCSSで、新ページを下・旧ページを上に重ねて旧ページのみフェードアウトする方式。 */
 (() => {
   const closeMobileMenu = () => {
     const nav = document.getElementById("globalNav");
