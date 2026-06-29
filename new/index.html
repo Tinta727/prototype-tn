@@ -10,11 +10,19 @@
   <link rel="stylesheet" href="css/tn-common.css?v=82">
 
   <style id="tn-page-transition-style">
-    /* update_108: 白パカ対策＋文字点滅防止＋リンク押下時の横ズレ防止。View Transitionは使わず、iframe重ね表示後に同一画面内でDOMを差し替える */
+    /* update_109: 白パカ・文字点滅・横ズレ対策を維持し、ページ表示時／遷移時の縦方向スクロール暴れを抑制 */
     html,
     body {
       background: #030303 !important;
       color-scheme: dark;
+      scroll-behavior: auto !important;
+      overflow-anchor: none;
+    }
+
+    .section-observe {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
     }
   </style>
 </head>
