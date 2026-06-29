@@ -1,4 +1,4 @@
-/* update_103: 共通JS。旧 #company URL転送、モバイルメニュー、ページ遷移はブラウザ標準のクロスドキュメントView Transitionでオーバーラップ表示 */
+/* update_104: 共通JS。旧 #company URL転送、モバイルメニュー、ページ遷移はブラウザ標準のクロスドキュメントView Transitionで0.5秒オーバーラップ表示 */
 (() => {
   const closeMobileMenu = () => {
     const nav = document.getElementById("globalNav");
