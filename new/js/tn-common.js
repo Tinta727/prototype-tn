@@ -1,6 +1,6 @@
 /* update_100: 共通JS。旧 #company URL転送、モバイルメニュー、ページ遷移ディゾルブ制御 */
 (() => {
-  const TRANSITION_MS = 500;
+  const TRANSITION_MS = 250;
 
   const installPageTransitionStyle = () => {
     if (document.getElementById("tn-page-transition-style")) return;
