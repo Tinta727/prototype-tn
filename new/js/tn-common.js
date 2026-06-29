@@ -1,4 +1,4 @@
-/* update_99: 共通JS。旧 #company URL転送、モバイルメニュー、ページ遷移ディゾルブ制御 */
+/* update_100: 共通JS。旧 #company URL転送、モバイルメニュー、ページ遷移ディゾルブ制御 */
 (() => {
   const TRANSITION_MS = 500;
 
