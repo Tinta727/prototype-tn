@@ -11,9 +11,10 @@
   <link rel="stylesheet" href="css/tn-company-page.css?v=99">
 
   <style id="tn-page-transition-style">
+    /* update_105: 白パカ対策。新ページを下に常時表示し、旧ページだけを0.5秒でフェードアウトさせるオーバーラップ方式 */
     html,
     body {
-      background: #030303;
+      background-color: #030303 !important;
       color-scheme: dark;
     }
 
@@ -22,13 +23,15 @@
     }
 
     ::view-transition {
-      background: #030303;
+      background-color: #030303 !important;
     }
 
-    ::view-transition-group(root) {
+    ::view-transition-group(root),
+    ::view-transition-image-pair(root) {
       animation-duration: 500ms;
       animation-timing-function: ease-in-out;
       isolation: isolate;
+      background-color: #030303 !important;
     }
 
     ::view-transition-old(root),
@@ -36,32 +39,32 @@
       animation-duration: 500ms;
       animation-timing-function: ease-in-out;
       animation-fill-mode: both;
-      mix-blend-mode: normal;
+      mix-blend-mode: normal !important;
       backface-visibility: hidden;
+      background-color: #030303 !important;
     }
 
-    ::view-transition-old(root) {
-      animation-name: tn-page-overlap-old;
+    /* 新ページは最初から下に表示。白い中間画面を作らない */
+    ::view-transition-new(root) {
+      animation: none;
+      opacity: 1;
       z-index: 1;
     }
 
-    ::view-transition-new(root) {
-      animation-name: tn-page-overlap-new;
+    /* 旧ページだけを上から0.5秒で抜く */
+    ::view-transition-old(root) {
+      animation-name: tn-page-overlap-old-only;
       z-index: 2;
     }
 
-    @keyframes tn-page-overlap-old {
+    @keyframes tn-page-overlap-old-only {
       0% { opacity: 1; }
       100% { opacity: 0; }
     }
 
-    @keyframes tn-page-overlap-new {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-
     @media (prefers-reduced-motion: reduce) {
       ::view-transition-group(root),
+      ::view-transition-image-pair(root),
       ::view-transition-old(root),
       ::view-transition-new(root) {
         animation-duration: 1ms !important;
@@ -208,6 +211,6 @@
     </div>
   </footer>
   <script src="js/bg-pulse-b.js?v=81"></script>
-  <script src="js/tn-common.js?v=104"></script>
+  <script src="js/tn-common.js?v=105"></script>
 </body>
 </html>
