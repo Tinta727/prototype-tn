@@ -11,25 +11,37 @@
   <link rel="stylesheet" href="css/tn-company-page.css?v=99">
 
   <style id="tn-page-transition-style">
-    body {
+    html {
+      background: #030303;
+    }
+    #tn-page-transition-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 2147483647;
+      pointer-events: none;
+      background: #030303;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 250ms ease, visibility 0s linear 250ms;
+    }
+    html.tn-page-ready #tn-page-transition-overlay {
       opacity: 0;
+      visibility: hidden;
+    }
+    html.tn-page-exit #tn-page-transition-overlay {
+      opacity: 1;
+      visibility: visible;
       transition: opacity 250ms ease;
     }
-    body.tn-page-ready {
-      opacity: 1;
-    }
-    body.tn-page-exit {
-      opacity: 0;
-    }
     @media (prefers-reduced-motion: reduce) {
-      body {
-        opacity: 1 !important;
-        transition: none !important;
+      #tn-page-transition-overlay {
+        display: none !important;
       }
     }
   </style>
 </head>
 <body class="tn-company-document">
+  <div id="tn-page-transition-overlay" aria-hidden="true"></div>
   <canvas id="dataWave" aria-hidden="true"></canvas>
   <div class="site-noise" aria-hidden="true"></div>
 
@@ -168,6 +180,6 @@
     </div>
   </footer>
   <script src="js/main.js?v=36"></script>
-  <script src="js/tn-common.js?v=100"></script>
+  <script src="js/tn-common.js?v=102"></script>
 </body>
 </html>
