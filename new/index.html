@@ -8,6 +8,25 @@
   <link rel="stylesheet" href="css/style.css?v=47">
   <link rel="stylesheet" href="css/update_48_icons.css?v=48">
   <link rel="stylesheet" href="css/tn-common.css?v=82">
+
+  <style id="tn-page-transition-style">
+    body {
+      opacity: 0;
+      transition: opacity 500ms ease;
+    }
+    body.tn-page-ready {
+      opacity: 1;
+    }
+    body.tn-page-exit {
+      opacity: 0;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      body {
+        opacity: 1 !important;
+        transition: none !important;
+      }
+    }
+  </style>
 </head>
 <body>
   <canvas id="dataWave" aria-hidden="true"></canvas>
@@ -233,6 +252,6 @@
   </footer>
 
   <script src="js/main.js?v=36"></script>
-  <script src="js/tn-common.js?v=99"></script>
+  <script src="js/tn-common.js?v=100"></script>
 </body>
 </html>
