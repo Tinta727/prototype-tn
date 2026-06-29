@@ -1,4 +1,4 @@
-/* update_107: 共通JS。旧 #company URL転送、モバイルメニュー、白パカ防止＋文字点滅防止の0.5秒オーバーラップ遷移。View Transitionは使用しない。 */
+/* update_108: 共通JS。旧 #company URL転送、モバイルメニュー、白パカ防止＋文字点滅防止＋本文の横ズレ防止の0.5秒オーバーラップ遷移。View Transitionは使用しない。 */
 (() => {
   const TRANSITION_MS = 500;
   const CLEANUP_DELAY_MS = 90;
@@ -54,7 +54,7 @@
         z-index: 2147483647;
         background: #030303;
         opacity: 0;
-        pointer-events: none;
+        pointer-events: auto;
         transition: opacity ${TRANSITION_MS}ms ease-in-out;
         overflow: hidden;
         transform: translateZ(0);
@@ -69,7 +69,6 @@
         display: block;
         background: #030303;
       }
-      body.tn-transition-locked { overflow: hidden !important; }
     `;
     document.head.appendChild(style);
   };
@@ -207,7 +206,6 @@
     iframe.src = targetUrl.href;
     wrap.appendChild(iframe);
     document.documentElement.appendChild(wrap);
-    document.body.classList.add("tn-transition-locked");
 
     try {
       const [htmlText] = await Promise.all([fetchPage(targetUrl), waitForIframe(iframe)]);
@@ -223,7 +221,6 @@
 
       window.setTimeout(() => {
         wrap.remove();
-        document.body.classList.remove("tn-transition-locked");
         isTransitioning = false;
       }, CLEANUP_DELAY_MS);
     } catch (_) {
