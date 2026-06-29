@@ -1,7 +1,8 @@
-/* update_109: 共通JS。旧 #company URL転送、モバイルメニュー、白パカ防止＋文字点滅防止＋本文の横ズレ防止＋縦方向スクロール暴れ防止の0.5秒オーバーラップ遷移。View Transitionは使用しない。 */
+/* update_110: 共通JS。旧 #company URL転送、モバイルメニュー、白パカ防止＋文字点滅防止＋本文の横ズレ防止＋縦方向スクロール暴れ防止＋TOP初期表示文字0.25秒フェードインの0.5秒オーバーラップ遷移。View Transitionは使用しない。 */
 (() => {
   const TRANSITION_MS = 500;
   const CLEANUP_DELAY_MS = 90;
+  const TOP_TEXT_FADE_MS = 250;
 
   if ("scrollRestoration" in window.history) {
     window.history.scrollRestoration = "manual";
@@ -42,7 +43,55 @@
     targetDoc.head.appendChild(style);
   };
 
+
+  const injectTopEntryFadeStyle = (targetDoc = document) => {
+    if (!targetDoc || targetDoc.getElementById("tn-top-entry-fade-style")) return;
+    const style = targetDoc.createElement("style");
+    style.id = "tn-top-entry-fade-style";
+    style.textContent = `
+      body.tn-top-entry-prep .site-header,
+      body.tn-top-entry-prep main,
+      body.tn-top-entry-prep .site-footer {
+        opacity: 0;
+        transition: opacity ${TOP_TEXT_FADE_MS}ms ease;
+      }
+      body.tn-top-entry-prep.tn-top-entry-show .site-header,
+      body.tn-top-entry-prep.tn-top-entry-show main,
+      body.tn-top-entry-prep.tn-top-entry-show .site-footer,
+      body.tn-top-entry-done .site-header,
+      body.tn-top-entry-done main,
+      body.tn-top-entry-done .site-footer {
+        opacity: 1;
+      }
+    `;
+    targetDoc.head.appendChild(style);
+  };
+
+  const isTopPageUrl = (urlLike = window.location) => {
+    const pathname = urlLike.pathname || "";
+    return pathname.endsWith("/new/") || pathname.endsWith("/new") || pathname.endsWith("/index.html") || pathname.endsWith("/bg-pulse-b.html");
+  };
+
+  const runTopEntryFade = () => {
+    if (!isTopPageUrl(window.location)) return;
+    if (!document.body || document.body.classList.contains("tn-company-document")) return;
+    injectTopEntryFadeStyle(document);
+    document.body.classList.add("tn-top-entry-prep");
+    document.body.classList.remove("tn-top-entry-done");
+    requestAnimationFrame(() => {
+      forceTopWithoutAnimation(window);
+      requestAnimationFrame(() => {
+        document.body.classList.add("tn-top-entry-show");
+        window.setTimeout(() => {
+          document.body.classList.remove("tn-top-entry-prep", "tn-top-entry-show");
+          document.body.classList.add("tn-top-entry-done");
+        }, TOP_TEXT_FADE_MS + 60);
+      });
+    });
+  };
+
   injectNoScrollMotionStyle(document);
+  injectTopEntryFadeStyle(document);
   forceTopWithoutAnimation(window);
 
   const closeMobileMenu = () => {
@@ -99,6 +148,20 @@
         transform: none !important;
         transition: none !important;
       }
+      body.tn-top-entry-prep .site-header,
+      body.tn-top-entry-prep main,
+      body.tn-top-entry-prep .site-footer {
+        opacity: 0;
+        transition: opacity ${TOP_TEXT_FADE_MS}ms ease;
+      }
+      body.tn-top-entry-prep.tn-top-entry-show .site-header,
+      body.tn-top-entry-prep.tn-top-entry-show main,
+      body.tn-top-entry-prep.tn-top-entry-show .site-footer,
+      body.tn-top-entry-done .site-header,
+      body.tn-top-entry-done main,
+      body.tn-top-entry-done .site-footer {
+        opacity: 1;
+      }
       .tn-overlap-frame-wrap {
         position: fixed;
         inset: 0;
@@ -132,6 +195,8 @@
     return pathname.endsWith("/") || pathname.endsWith(".html") || pathname.endsWith("/new");
   };
 
+  let suppressTopEntryFadeOnce = false;
+
   const refreshCommonState = () => {
     injectNoScrollMotionStyle(document);
 
@@ -141,6 +206,12 @@
     document.querySelectorAll(".section-observe").forEach((el) => {
       el.classList.add("is-visible");
     });
+
+    if (suppressTopEntryFadeOnce) {
+      suppressTopEntryFadeOnce = false;
+    } else {
+      runTopEntryFade();
+    }
   };
 
   if (document.readyState === "loading") {
@@ -184,6 +255,13 @@
     const targetBody = targetDoc.body;
     if (!targetBody) return false;
 
+    if (isTopPageUrl(targetUrl)) {
+      targetBody.classList.remove("tn-top-entry-prep", "tn-top-entry-show");
+      targetBody.classList.add("tn-top-entry-done");
+    } else {
+      targetBody.classList.remove("tn-top-entry-prep", "tn-top-entry-show", "tn-top-entry-done");
+    }
+
     targetBody.querySelectorAll(".section-observe").forEach((el) => el.classList.add("is-visible"));
     targetBody.querySelector("#dataWave")?.remove();
     targetBody.querySelector(".site-noise")?.remove();
@@ -219,6 +297,7 @@
     requestAnimationFrame(() => forceTopWithoutAnimation(window));
 
     closeMobileMenu();
+    suppressTopEntryFadeOnce = true;
     refreshCommonState();
     return true;
   };
