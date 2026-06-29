@@ -1,7 +1,49 @@
-/* update_108: 共通JS。旧 #company URL転送、モバイルメニュー、白パカ防止＋文字点滅防止＋本文の横ズレ防止の0.5秒オーバーラップ遷移。View Transitionは使用しない。 */
+/* update_109: 共通JS。旧 #company URL転送、モバイルメニュー、白パカ防止＋文字点滅防止＋本文の横ズレ防止＋縦方向スクロール暴れ防止の0.5秒オーバーラップ遷移。View Transitionは使用しない。 */
 (() => {
   const TRANSITION_MS = 500;
   const CLEANUP_DELAY_MS = 90;
+
+  if ("scrollRestoration" in window.history) {
+    window.history.scrollRestoration = "manual";
+  }
+
+  const forceTopWithoutAnimation = (targetWindow = window) => {
+    try {
+      const doc = targetWindow.document;
+      if (doc?.documentElement) {
+        doc.documentElement.style.scrollBehavior = "auto";
+        doc.documentElement.style.overflowAnchor = "none";
+        doc.documentElement.scrollTop = 0;
+      }
+      if (doc?.body) {
+        doc.body.style.scrollBehavior = "auto";
+        doc.body.style.overflowAnchor = "none";
+        doc.body.scrollTop = 0;
+      }
+      targetWindow.scrollTo(0, 0);
+    } catch (_) {}
+  };
+
+  const injectNoScrollMotionStyle = (targetDoc = document) => {
+    if (!targetDoc || targetDoc.getElementById("tn-no-scroll-motion-style")) return;
+    const style = targetDoc.createElement("style");
+    style.id = "tn-no-scroll-motion-style";
+    style.textContent = `
+      html, body {
+        scroll-behavior: auto !important;
+        overflow-anchor: none !important;
+      }
+      .section-observe {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    `;
+    targetDoc.head.appendChild(style);
+  };
+
+  injectNoScrollMotionStyle(document);
+  forceTopWithoutAnimation(window);
 
   const closeMobileMenu = () => {
     const nav = document.getElementById("globalNav");
@@ -47,7 +89,16 @@
     const style = document.createElement("style");
     style.id = "tn-overlap-transition-runtime-style";
     style.textContent = `
-      html, body { background: #030303 !important; }
+      html, body {
+        background: #030303 !important;
+        scroll-behavior: auto !important;
+        overflow-anchor: none !important;
+      }
+      .section-observe {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
       .tn-overlap-frame-wrap {
         position: fixed;
         inset: 0;
@@ -82,21 +133,13 @@
   };
 
   const refreshCommonState = () => {
+    injectNoScrollMotionStyle(document);
+
     const currentYear = document.getElementById("currentYear");
     if (currentYear) currentYear.textContent = String(new Date().getFullYear());
 
-    if (!window.__tnCommonObserver) {
-      window.__tnCommonObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add("is-visible");
-        });
-      }, { threshold: 0.12 });
-    }
-
     document.querySelectorAll(".section-observe").forEach((el) => {
-      window.__tnCommonObserver.observe(el);
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight * 0.92) el.classList.add("is-visible");
+      el.classList.add("is-visible");
     });
   };
 
@@ -136,9 +179,12 @@
       currentDescription.setAttribute("content", targetDescription.getAttribute("content") || "");
     }
 
+    injectNoScrollMotionStyle(targetDoc);
+
     const targetBody = targetDoc.body;
     if (!targetBody) return false;
 
+    targetBody.querySelectorAll(".section-observe").forEach((el) => el.classList.add("is-visible"));
     targetBody.querySelector("#dataWave")?.remove();
     targetBody.querySelector(".site-noise")?.remove();
     targetBody.querySelectorAll("script").forEach((script) => script.remove());
@@ -149,6 +195,7 @@
     if (preservedCanvas) preservedNodes.push(preservedCanvas);
     if (preservedNoise) preservedNodes.push(preservedNoise);
 
+    forceTopWithoutAnimation(window);
     document.body.className = targetBody.className;
     document.body.innerHTML = "";
     preservedNodes.forEach((node) => document.body.appendChild(node));
@@ -158,13 +205,18 @@
       window.history.pushState({ tnSpa: true }, "", targetUrl.href);
     }
 
+    forceTopWithoutAnimation(window);
     if (targetUrl.hash) {
       const hashTarget = document.getElementById(decodeURIComponent(targetUrl.hash.slice(1)));
-      if (hashTarget) hashTarget.scrollIntoView({ block: "start" });
-      else window.scrollTo(0, 0);
+      if (hashTarget) {
+        hashTarget.scrollIntoView({ block: "start", behavior: "auto" });
+      } else {
+        forceTopWithoutAnimation(window);
+      }
     } else {
-      window.scrollTo(0, 0);
+      forceTopWithoutAnimation(window);
     }
+    requestAnimationFrame(() => forceTopWithoutAnimation(window));
 
     closeMobileMenu();
     refreshCommonState();
@@ -177,6 +229,12 @@
     let done = false;
     const finish = () => {
       if (done) return;
+      try {
+        injectNoScrollMotionStyle(iframe.contentDocument);
+        iframe.contentDocument?.querySelectorAll(".section-observe").forEach((el) => el.classList.add("is-visible"));
+        forceTopWithoutAnimation(iframe.contentWindow);
+        requestAnimationFrame(() => forceTopWithoutAnimation(iframe.contentWindow));
+      } catch (_) {}
       done = true;
       resolve();
     };
@@ -210,8 +268,18 @@
     try {
       const [htmlText] = await Promise.all([fetchPage(targetUrl), waitForIframe(iframe)]);
 
+      try {
+        injectNoScrollMotionStyle(iframe.contentDocument);
+        iframe.contentDocument?.querySelectorAll(".section-observe").forEach((el) => el.classList.add("is-visible"));
+        forceTopWithoutAnimation(iframe.contentWindow);
+      } catch (_) {}
+
       requestAnimationFrame(() => {
-        requestAnimationFrame(() => wrap.classList.add("is-visible"));
+        forceTopWithoutAnimation(iframe.contentWindow);
+        requestAnimationFrame(() => {
+          forceTopWithoutAnimation(iframe.contentWindow);
+          wrap.classList.add("is-visible");
+        });
       });
 
       await new Promise((resolve) => window.setTimeout(resolve, TRANSITION_MS + 40));
